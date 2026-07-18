@@ -11,6 +11,7 @@ export type RecurringEvent = {
   location: string;
   description: string;
   rule: RecurrenceRule;
+  zoom?: boolean;
 };
 
 export type UpcomingEvent = {
@@ -20,6 +21,7 @@ export type UpcomingEvent = {
   time: string;
   location: string;
   description: string;
+  zoom?: boolean;
 };
 
 // Every gathering that repeats on a fixed schedule. Mirrors
@@ -35,6 +37,7 @@ export const recurringEvents: RecurringEvent[] = [
     location: "In-person & online",
     description: "Bible-based classes for all ages before worship.",
     rule: { frequency: "weekly", weekday: 0 },
+    zoom: true,
   },
   {
     slug: "sunday-worship",
@@ -45,6 +48,7 @@ export const recurringEvents: RecurringEvent[] = [
     location: "In-person & online",
     description: "Our main worship service, with singing, the Word, and prayer.",
     rule: { frequency: "weekly", weekday: 0 },
+    zoom: true,
   },
   {
     slug: "shiloh-hour-monday",
@@ -75,6 +79,7 @@ export const recurringEvents: RecurringEvent[] = [
     location: "In-person & online",
     description: 'One hour "beneath the surface" of the Word.',
     rule: { frequency: "weekly", weekday: 3 },
+    zoom: true,
   },
   {
     slug: "shiloh-hour-friday",
@@ -189,6 +194,7 @@ export function getUpcomingEvents(count: number, from: Date = new Date()): Upcom
       time: bestEvent.time,
       location: bestEvent.location,
       description: bestEvent.description,
+      zoom: bestEvent.zoom,
     });
     cursors.set(bestEvent.slug, nextOccurrenceAfter(bestEvent, bestDate));
   }
