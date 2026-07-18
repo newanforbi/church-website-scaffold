@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { PageHero } from "@/components/page-hero";
-import { siteConfig } from "@/lib/site-config";
+import { siteConfig, toTelHref } from "@/lib/site-config";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -19,7 +19,7 @@ export default function ContactPage() {
       <section className="container-page py-16">
         <div className="mx-auto max-w-2xl text-center">
           <div className="flex flex-wrap justify-center gap-4">
-            <a href={`tel:${siteConfig.contact.phone}`} className="btn-primary">
+            <a href={toTelHref(siteConfig.contact.phone)} className="btn-primary">
               Call Us: {siteConfig.contact.phone}
             </a>
             <a href={`mailto:${siteConfig.contact.email}`} className="btn-outline">
@@ -42,11 +42,14 @@ export default function ContactPage() {
             <div>
               <dt className="font-semibold text-brand-950">Phone</dt>
               <dd>
-                <a href={`tel:${siteConfig.contact.phone}`} className="hover:text-brand-700">
+                <a href={toTelHref(siteConfig.contact.phone)} className="hover:text-brand-700">
                   {siteConfig.contact.phone}
                 </a>
                 {" · "}
-                <a href={`tel:${siteConfig.contact.phoneSecondary}`} className="hover:text-brand-700">
+                <a
+                  href={toTelHref(siteConfig.contact.phoneSecondary)}
+                  className="hover:text-brand-700"
+                >
                   {siteConfig.contact.phoneSecondary}
                 </a>
               </dd>
@@ -77,7 +80,7 @@ export default function ContactPage() {
               <dt className="font-semibold text-brand-950">Shiloh Hour Prayer Line</dt>
               <dd>
                 <a
-                  href={`tel:${siteConfig.contact.prayerLine.phone}`}
+                  href={toTelHref(siteConfig.contact.prayerLine.phone)}
                   className="hover:text-brand-700"
                 >
                   {siteConfig.contact.prayerLine.phone}
