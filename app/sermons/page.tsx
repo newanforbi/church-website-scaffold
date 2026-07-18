@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import { PageHero } from "@/components/page-hero";
+import { YouTubeFeed } from "@/components/youtube-feed";
 import { sermons } from "@/lib/sermons-data";
 import { siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = {
-  title: "Sermons",
-  description: `Watch and listen to recent messages from ${siteConfig.name}.`,
+  title: "Sermons and Open Heavens",
+  description: `Watch and listen to recent messages and Open Heavens devotionals from ${siteConfig.name}.`,
 };
 
 function formatDate(dateStr: string) {
@@ -21,12 +22,36 @@ export default function SermonsPage() {
     <>
       <PageHero
         eyebrow="Messages"
-        title="Sermons"
-        description="Catch up on recent messages or revisit a series that spoke to you."
+        title="Sermons and Open Heavens"
+        description="Catch up on recent messages, Open Heavens devotionals, and full services from our YouTube channel."
       />
 
       <section className="container-page py-16">
-        <div className="grid gap-8 sm:grid-cols-2">
+        <div className="mx-auto max-w-3xl">
+          <YouTubeFeed
+            channelId={siteConfig.youtube.channelId}
+            title={`${siteConfig.name} on YouTube`}
+          />
+          <p className="mt-4 text-center text-sm text-brand-600">
+            Every upload from our channel, most recent first &mdash; scroll the list on the right
+            to browse the full archive.
+          </p>
+          <div className="mt-4 text-center">
+            <a
+              href={`https://www.youtube.com/channel/${siteConfig.youtube.channelId}`}
+              target="_blank"
+              rel="noreferrer noopener"
+              className="btn-secondary"
+            >
+              Visit Our YouTube Channel
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section className="container-page pb-16">
+        <h2 className="section-heading text-center">Featured Messages</h2>
+        <div className="mt-10 grid gap-8 sm:grid-cols-2">
           {sermons.map((sermon) => (
             <article
               key={sermon.slug}
