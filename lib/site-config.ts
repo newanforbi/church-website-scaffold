@@ -24,6 +24,7 @@ export type NavLink = {
 export type SocialLink = {
   label: string;
   href: string;
+  icon: string;
 };
 
 export const siteConfig = {
@@ -129,9 +130,18 @@ export const siteConfig = {
     {
       label: "Facebook",
       href: "https://www.facebook.com/people/Rccg-Orun-Shi-Stockton-Ca/100064716849565/",
+      icon: "/icons/facebook.png",
     },
-    { label: "Instagram", href: "https://www.instagram.com/rccgorunshi.stockton/" },
-    { label: "YouTube", href: "https://www.youtube.com/channel/UCEYR_1SJIV8MtbTvoV0c3LA" },
+    {
+      label: "Instagram",
+      href: "https://www.instagram.com/rccgorunshi.stockton/",
+      icon: "/icons/instagram.jpeg",
+    },
+    {
+      label: "YouTube",
+      href: "https://www.youtube.com/channel/UCEYR_1SJIV8MtbTvoV0c3LA",
+      icon: "/icons/youtube.png",
+    },
   ] satisfies SocialLink[],
 
   youtube: {
