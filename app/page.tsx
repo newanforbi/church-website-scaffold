@@ -107,6 +107,12 @@ export default function HomePage() {
                       <p className="text-sm font-semibold text-brand-700">{item.time}</p>
                       <p className="text-sm font-medium text-brand-950">{item.label}</p>
                       {item.detail && <p className="text-xs text-brand-600">{item.detail}</p>}
+                      {item.zoom && (
+                        <p className="mt-1 text-xs font-semibold text-brand-700">
+                          Zoom ID {siteConfig.zoom.meetingId} &middot; Passcode{" "}
+                          {siteConfig.zoom.passcode}
+                        </p>
+                      )}
                     </li>
                   ))}
                 </ul>
@@ -215,6 +221,12 @@ export default function HomePage() {
                     <p className="text-sm text-brand-300">
                       {event.time} &middot; {event.location}
                     </p>
+                    {event.zoom && (
+                      <p className="mt-1 text-xs font-semibold text-gold-400">
+                        Zoom ID {siteConfig.zoom.meetingId} &middot; Passcode{" "}
+                        {siteConfig.zoom.passcode}
+                      </p>
+                    )}
                   </div>
                 </li>
               ))}

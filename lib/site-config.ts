@@ -8,6 +8,7 @@ export type WeeklyScheduleItem = {
   label: string;
   time: string;
   detail?: string;
+  zoom?: boolean;
 };
 
 export type WeeklyScheduleDay = {
@@ -68,8 +69,8 @@ export const siteConfig = {
     {
       day: "Sunday",
       items: [
-        { label: "Sunday School", time: "9:30 AM", detail: "In-person & online" },
-        { label: "Sunday Worship", time: "10:30 AM", detail: "In-person & online" },
+        { label: "Sunday School", time: "9:30 AM", detail: "In-person & online", zoom: true },
+        { label: "Sunday Worship", time: "10:30 AM", detail: "In-person & online", zoom: true },
       ],
     },
     {
@@ -90,7 +91,12 @@ export const siteConfig = {
           time: "12:00 PM",
           detail: "Call (757) 841-1355, passcode 7777862",
         },
-        { label: "Digging Deep Bible Study", time: "7:00–8:00 PM", detail: "In-person & online" },
+        {
+          label: "Digging Deep Bible Study",
+          time: "7:00–8:00 PM",
+          detail: "In-person & online",
+          zoom: true,
+        },
       ],
     },
     {

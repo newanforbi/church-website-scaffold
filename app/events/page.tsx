@@ -48,6 +48,12 @@ export default function EventsPage() {
                 <p className="mt-1 text-sm font-medium text-brand-600">
                   {formatDate(event.date)} &middot; {event.time} &middot; {event.location}
                 </p>
+                {event.zoom && (
+                  <p className="mt-2 inline-flex items-center gap-1 rounded-full bg-brand-100 px-3 py-1 text-xs font-semibold text-brand-700">
+                    Zoom Meeting ID: {siteConfig.zoom.meetingId} &middot; Passcode:{" "}
+                    {siteConfig.zoom.passcode}
+                  </p>
+                )}
                 <p className="mt-2 max-w-2xl text-sm leading-6 text-brand-800">
                   {event.description}
                 </p>
