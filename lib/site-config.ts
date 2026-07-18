@@ -122,6 +122,7 @@ export const siteConfig = {
     { label: "About", href: "/about" },
     { label: "Sermons", href: "/sermons" },
     { label: "Events", href: "/events" },
+    { label: "Gallery", href: "/gallery" },
     { label: "Give", href: "/give" },
     { label: "Contact", href: "/contact" },
   ] satisfies NavLink[],
