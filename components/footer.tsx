@@ -70,6 +70,11 @@ export function Footer() {
               </a>
             </li>
             <li>
+              <a href={`tel:${siteConfig.contact.phoneSecondary}`} className="hover:text-white">
+                {siteConfig.contact.phoneSecondary}
+              </a>
+            </li>
+            <li>
               <a href={`mailto:${siteConfig.contact.email}`} className="hover:text-white">
                 {siteConfig.contact.email}
               </a>

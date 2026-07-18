@@ -5,33 +5,37 @@ import { siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = {
   title: "About",
-  description: `Learn about ${siteConfig.name}'s story, beliefs, and leadership.`,
+  description: `Learn about ${siteConfig.name}'s story, vision, and leadership.`,
 };
 
-const beliefs = [
-  {
-    title: "The Bible",
-    body: "We believe the Bible is God's inspired word and our authority for faith and life.",
-  },
-  {
-    title: "The Gospel",
-    body: "We believe salvation is a gift of grace through faith in Jesus Christ, not earned by works.",
-  },
-  {
-    title: "Community",
-    body: "We believe the church is a family called to worship, grow, and serve together.",
-  },
-  {
-    title: "Mission",
-    body: "We believe every person is called to love God and love their neighbor in word and deed.",
-  },
+const vision = [
+  "Grow in faith together",
+  "Understand the Word of God deeper together",
+  "Encounter the presence of God through prayers together",
+  "Making way for our journey to Eternity together",
 ];
 
-const staff = [
-  { name: "James Whitfield", role: "Lead Pastor" },
-  { name: "Maria Chen", role: "Associate Pastor" },
-  { name: "Tobias Reyes", role: "Worship & Youth Elder" },
-  { name: "Aisha Bello", role: "Director of Operations" },
+const mission = [
+  "To make Heaven.",
+  "To take as many people with us.",
+  "To have a member of RCCG in every family of all nations.",
+  "To accomplish No. 1 above, holiness will be our lifestyle.",
+  "To accomplish No. 2 and 3 above, we will plant churches within five minutes walking distance in every city and town of developing countries, and within five minutes driving distance in every city and town of developed countries.",
+];
+
+const pastorRoles = [
+  {
+    title: "Ministry",
+    body: "He and his wife, Pastor Nike Ejibunu, pastor the OrunShi Parish, affiliated with the Redeemed Christian Church of God (RCCG) in Nigeria, and are highly regarded for their leadership, marriage, and community outreach.",
+  },
+  {
+    title: "Media & Broadcasting",
+    body: "Beyond his pastoral duties, he is the Chief Executive and Owner of Okun Radio, a community online radio station based in the USA.",
+  },
+  {
+    title: "Music & Teaching",
+    body: "An active music minister and speaker, he regularly ministers on themes such as destiny, faith, and spiritual empowerment.",
+  },
 ];
 
 export default function AboutPage() {
@@ -40,7 +44,7 @@ export default function AboutPage() {
       <PageHero
         eyebrow="Our Story"
         title="About Us"
-        description="Get to know the people, the beliefs, and the mission behind our church family."
+        description="Get to know the story, vision, and leadership behind RCCG Open Heavens Parish (OrunShi)."
       />
 
       <section className="container-page py-16">
@@ -48,14 +52,14 @@ export default function AboutPage() {
           <div>
             <h2 className="section-heading">Our Story</h2>
             <p className="mt-4 text-base leading-7 text-brand-800">
-              {siteConfig.name} started as a small gathering of families meeting in a living
-              room, united by a shared desire to know God and make him known. Today, we&apos;re a
-              growing community that continues to hold on to that same spirit: authentic
-              relationships, honest worship, and a heart for our city.
+              RCCG Open Heavens OrunShi, a parish of RCCG Worldwide, was established by the Holy
+              Spirit in 2020 during the pandemic, meeting online. The church has since been under
+              the direction of God. At the center of everything we do is a commitment to bring a
+              positive change to families in our community.
             </p>
             <p className="mt-4 text-base leading-7 text-brand-800">
-              Whether you&apos;ve been part of a church for decades or you&apos;re just starting
-              to explore faith, we&apos;d love for you to find a home here.
+              We are committed to upholding our mission to provide spiritual nourishment and
+              support to our members, while also reaching out to others in need.
             </p>
           </div>
           <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
@@ -72,30 +76,71 @@ export default function AboutPage() {
 
       <section className="bg-brand-50 py-16">
         <div className="container-page">
-          <h2 className="section-heading text-center">What We Believe</h2>
+          <h2 className="section-heading text-center">Our Vision</h2>
           <div className="mt-10 grid gap-8 sm:grid-cols-2">
-            {beliefs.map((b) => (
-              <div key={b.title} className="rounded-xl bg-white p-6 shadow-sm ring-1 ring-brand-900/5">
-                <h3 className="font-serif text-xl font-semibold text-brand-950">{b.title}</h3>
-                <p className="mt-2 text-sm leading-6 text-brand-700">{b.body}</p>
+            {vision.map((v, i) => (
+              <div
+                key={v}
+                className="flex items-start gap-4 rounded-xl bg-white p-6 shadow-sm ring-1 ring-brand-900/5"
+              >
+                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand-700 font-serif text-sm font-semibold text-white">
+                  {i + 1}
+                </span>
+                <p className="text-sm leading-6 text-brand-800">{v}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
+      <section className="bg-brand-950 py-16">
+        <div className="container-page">
+          <p className="text-center text-sm font-semibold uppercase tracking-wide text-gold-400">
+            RCCG
+          </p>
+          <h2 className="mt-2 text-center font-serif text-3xl font-semibold text-white sm:text-4xl">
+            Our Mission
+          </h2>
+          <ol className="mx-auto mt-10 max-w-2xl space-y-4">
+            {mission.map((m, i) => (
+              <li key={m} className="flex gap-4 text-brand-100">
+                <span className="font-serif text-lg font-semibold text-gold-400">{i + 1}.</span>
+                <p className="text-sm leading-6">{m}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
       <section className="container-page py-16">
-        <h2 className="section-heading text-center">Our Team</h2>
-        <div className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-          {staff.map((person) => (
-            <div key={person.name} className="text-center">
-              <div className="mx-auto h-28 w-28 rounded-full bg-brand-100" aria-hidden="true" />
-              <p className="mt-4 font-serif text-lg font-semibold text-brand-950">
-                {person.name}
-              </p>
-              <p className="text-sm text-brand-600">{person.role}</p>
-            </div>
-          ))}
+        <h2 className="section-heading text-center">Meet the Pastor</h2>
+        <div className="mx-auto mt-10 max-w-3xl">
+          <div className="flex flex-col items-center text-center">
+            <div className="h-28 w-28 rounded-full bg-brand-100" aria-hidden="true" />
+            <p className="mt-4 font-serif text-xl font-semibold text-brand-950">
+              {siteConfig.contact.pastor}
+            </p>
+            <p className="text-sm text-brand-600">
+              Parish Pastor, alongside his wife, Pastor Nike Ejibunu
+            </p>
+          </div>
+          <p className="mt-6 text-center text-base leading-7 text-brand-800">
+            God created you with a divine purpose, meant to live a life of fulfillment, passion,
+            peace, joy, and significance. He wants you to be healthy and whole in every aspect of
+            your life so that you can make a positive impact on those around you &mdash; and you
+            don&apos;t have to do it alone. Pastor Lanre Ejibunu is a well-known clergyman, music
+            minister, and media executive, serving as parish pastor alongside his wife, Pastor
+            Nike Ejibunu.
+          </p>
+
+          <div className="mt-10 grid gap-6 sm:grid-cols-3">
+            {pastorRoles.map((r) => (
+              <div key={r.title} className="rounded-xl border border-brand-900/10 p-6">
+                <h3 className="font-serif text-lg font-semibold text-brand-950">{r.title}</h3>
+                <p className="mt-2 text-sm leading-6 text-brand-700">{r.body}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
     </>

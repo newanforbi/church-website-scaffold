@@ -15,28 +15,35 @@ export type SocialLink = {
 };
 
 export const siteConfig = {
-  name: "Grace Community Church",
-  shortName: "Grace Community",
-  tagline: "A welcoming church family, growing in faith together.",
+  name: "RCCG Open Heavens Parish (OrunShi)",
+  shortName: "RCCG OrunShi",
+  tagline: "Grow in faith, together.",
   description:
-    "Grace Community Church is a warm, welcoming congregation dedicated to worship, community, and service. Join us for Sunday services, midweek gatherings, and outreach events.",
+    "RCCG Open Heavens Parish (OrunShi) is a Stockton, CA congregation of the Redeemed Christian Church of God, established in 2020. We're committed to spiritual nourishment for our members and reaching out to our community with the love of Christ.",
   url: "https://example-church.vercel.app",
 
   contact: {
-    email: "hello@example-church.org",
-    phone: "+1 (555) 123-4567",
+    email: "rccgorunshi@gmail.com",
+    phone: "(832) 382-1450",
+    phoneSecondary: "(510) 967-8721",
     address: {
-      line1: "100 Faith Avenue",
-      city: "Springfield",
-      state: "IL",
-      zip: "62701",
+      line1: "1150 W. Robinhood Drive, Suite 2A",
+      city: "Stockton",
+      state: "CA",
+      zip: "95207",
+    },
+    pastor: "Ass't Pastor Lanre A. Ejibunu",
+    prayerLine: {
+      phone: "(757) 841-1355",
+      passcode: "7777862",
+      schedule: "Mon & Fri 12 PM (PDT) · Wed in Yoruba 12 PM (PDT)",
     },
   },
 
   serviceTimes: [
-    { label: "Sunday Worship", time: "9:00 AM & 11:00 AM", location: "Main Sanctuary" },
-    { label: "Sunday School", time: "9:00 AM", location: "Education Wing" },
-    { label: "Wednesday Bible Study", time: "7:00 PM", location: "Fellowship Hall" },
+    { label: "Sunday School", time: "9:30 AM", location: "In-person & online" },
+    { label: "Sunday Worship", time: "10:30 AM", location: "In-person & online" },
+    { label: "Digging Deep (Bible Study)", time: "Wed, 7:00–8:00 PM", location: "In-person & online" },
   ] satisfies ServiceTime[],
 
   nav: [
@@ -49,9 +56,12 @@ export const siteConfig = {
   ] satisfies NavLink[],
 
   social: [
-    { label: "Facebook", href: "https://facebook.com" },
-    { label: "Instagram", href: "https://instagram.com" },
-    { label: "YouTube", href: "https://youtube.com" },
+    {
+      label: "Facebook",
+      href: "https://www.facebook.com/people/Rccg-Orun-Shi-Stockton-Ca/100064716849565/",
+    },
+    { label: "Instagram", href: "https://www.instagram.com/rccgorunshi.stockton/" },
+    { label: "YouTube", href: "https://www.youtube.com/channel/UCEYR_1SJIV8MtbTvoV0c3LA" },
   ] satisfies SocialLink[],
 
   give: {

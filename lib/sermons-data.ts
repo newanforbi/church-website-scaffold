@@ -8,39 +8,40 @@ export type Sermon = {
   videoUrl?: string;
 };
 
+// Sample content — replace with real messages, e.g. from your Facebook/YouTube archive.
 export const sermons: Sermon[] = [
   {
-    slug: "rooted-in-grace",
-    title: "Rooted in Grace",
-    speaker: "Pastor James Whitfield",
+    slug: "the-mystery-of-destiny-helpers",
+    title: "The Mystery of Destiny Helpers",
+    speaker: "Pastor Lanre Ejibunu",
     date: "2026-07-13",
-    series: "Foundations",
+    series: "Open Heavens",
     summary:
-      "An exploration of what it means to build a life and a church family on the unshakable foundation of grace.",
+      "A study of 1 Kings 17:9 on how God positions people along our path to help carry out His purpose for our lives.",
   },
   {
-    slug: "a-table-for-all",
-    title: "A Table for All",
-    speaker: "Pastor Maria Chen",
+    slug: "growing-in-faith-together",
+    title: "Growing in Faith Together",
+    speaker: "Pastor Nike Ejibunu",
     date: "2026-07-06",
-    series: "Foundations",
+    series: "Open Heavens",
     summary:
-      "How the story of the early church challenges us to build a community marked by radical welcome.",
+      "Understanding the Word of God more deeply as a body, and what it means to encounter His presence in prayer together.",
   },
   {
-    slug: "walking-in-the-light",
-    title: "Walking in the Light",
-    speaker: "Pastor James Whitfield",
-    date: "2026-06-29",
-    series: "Foundations",
-    summary: "A look at 1 John and what it means to walk in honesty, humility, and hope.",
+    slug: "digging-deep-holiness",
+    title: "Digging Deep: A Lifestyle of Holiness",
+    speaker: "Pastor Lanre Ejibunu",
+    date: "2026-06-24",
+    series: "Digging Deep Bible Study",
+    summary: "Why holiness is central to the RCCG mission and how it shapes daily discipleship.",
   },
   {
-    slug: "the-good-shepherd",
-    title: "The Good Shepherd",
-    speaker: "Elder Tobias Reyes",
-    date: "2026-06-22",
-    series: "Gospel of John",
-    summary: "Jesus describes himself as the Good Shepherd who lays down his life for the sheep.",
+    slug: "the-journey-to-eternity",
+    title: "The Journey to Eternity",
+    speaker: "Pastor Nike Ejibunu",
+    date: "2026-06-15",
+    series: "Open Heavens",
+    summary: "Making way, together as a church family, for the journey that leads to eternity.",
   },
 ];

@@ -41,6 +41,10 @@ export default function ContactPage() {
                 <a href={`tel:${siteConfig.contact.phone}`} className="hover:text-brand-700">
                   {siteConfig.contact.phone}
                 </a>
+                {" · "}
+                <a href={`tel:${siteConfig.contact.phoneSecondary}`} className="hover:text-brand-700">
+                  {siteConfig.contact.phoneSecondary}
+                </a>
               </dd>
             </div>
             <div>
@@ -52,6 +56,10 @@ export default function ContactPage() {
               </dd>
             </div>
             <div>
+              <dt className="font-semibold text-brand-950">Pastor</dt>
+              <dd>{siteConfig.contact.pastor}</dd>
+            </div>
+            <div>
               <dt className="font-semibold text-brand-950">Service Times</dt>
               <dd className="space-y-1">
                 {siteConfig.serviceTimes.map((s) => (
@@ -59,6 +67,20 @@ export default function ContactPage() {
                     {s.label}: {s.time}
                   </p>
                 ))}
+              </dd>
+            </div>
+            <div>
+              <dt className="font-semibold text-brand-950">Shiloh Hour Prayer Line</dt>
+              <dd>
+                <a
+                  href={`tel:${siteConfig.contact.prayerLine.phone}`}
+                  className="hover:text-brand-700"
+                >
+                  {siteConfig.contact.prayerLine.phone}
+                </a>{" "}
+                &middot; Passcode {siteConfig.contact.prayerLine.passcode}
+                <br />
+                {siteConfig.contact.prayerLine.schedule}
               </dd>
             </div>
           </dl>
