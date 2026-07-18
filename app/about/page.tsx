@@ -23,20 +23,51 @@ const mission = [
   "To accomplish No. 2 and 3 above, we will plant churches within five minutes walking distance in every city and town of developing countries, and within five minutes driving distance in every city and town of developed countries.",
 ];
 
+const pastorIntroCitations = ["https://www.instagram.com/p/DWlSisDjqDI/"];
+
 const pastorRoles = [
   {
     title: "Ministry",
-    body: "He and his wife, Pastor Nike Ejibunu, pastor the OrunShi Parish, affiliated with the Redeemed Christian Church of God (RCCG) in Nigeria, and are highly regarded for their leadership, marriage, and community outreach.",
+    body: "He and his wife pastor the OrunShi Parish, which is affiliated with the Redeemed Christian Church of God (RCCG) in Nigeria. They are highly regarded for their leadership, marriage, and community outreach.",
+    citations: [
+      "https://www.instagram.com/reel/Da3nMChsplI/",
+      "https://elevationng.org/accelerate/speaker/pastor-godman-akinlabi/",
+      "https://www.instagram.com/p/DWlSisDjqDI/",
+      "https://www.linkedin.com/in/lanre-ejibunu-8898ba41",
+    ],
   },
   {
     title: "Media & Broadcasting",
     body: "Beyond his pastoral duties, he is the Chief Executive and Owner of Okun Radio, a community online radio station based in the USA.",
+    citations: ["https://www.linkedin.com/in/lanre-ejibunu-8898ba41"],
   },
   {
     title: "Music & Teaching",
-    body: "An active music minister and speaker, he regularly ministers on themes such as destiny, faith, and spiritual empowerment.",
+    body: "He is an active music minister and speaker who regularly ministers on themes such as destiny, faith, and spiritual empowerment.",
+    citations: [
+      "https://www.linkedin.com/in/lanre-ejibunu-8898ba41",
+      "https://www.facebook.com/100064716849565/videos/the-mystery-of-destiny-helpers1kings-179by-pastor-lanre-ejibunu/1282146454092886/",
+    ],
   },
 ];
+
+function Citations({ links }: { links: string[] }) {
+  return (
+    <sup className="ml-0.5 space-x-0.5">
+      {links.map((href, i) => (
+        <a
+          key={href}
+          href={href}
+          target="_blank"
+          rel="noreferrer noopener"
+          className="text-brand-500 hover:text-brand-700"
+        >
+          [{i + 1}]
+        </a>
+      ))}
+    </sup>
+  );
+}
 
 export default function AboutPage() {
   return (
@@ -125,19 +156,23 @@ export default function AboutPage() {
             </p>
           </div>
           <p className="mt-6 text-center text-base leading-7 text-brand-800">
-            God created you with a divine purpose, meant to live a life of fulfillment, passion,
-            peace, joy, and significance. He wants you to be healthy and whole in every aspect of
-            your life so that you can make a positive impact on those around you &mdash; and you
-            don&apos;t have to do it alone. Pastor Lanre Ejibunu is a well-known clergyman, music
-            minister, and media executive, serving as parish pastor alongside his wife, Pastor
-            Nike Ejibunu.
+            Pastor Lanre Ejibunu is a well-known clergyman, music minister, and media executive.
+            He serves as a center or parish pastor alongside his wife, Pastor Nike Ejibunu.
+            <Citations links={pastorIntroCitations} />
           </p>
 
-          <div className="mt-10 grid gap-6 sm:grid-cols-3">
+          <p className="mt-6 text-center text-sm font-semibold uppercase tracking-wide text-brand-600">
+            He is highly recognized for the following roles and endeavors:
+          </p>
+
+          <div className="mt-6 grid gap-6 sm:grid-cols-3">
             {pastorRoles.map((r) => (
               <div key={r.title} className="rounded-xl border border-brand-900/10 p-6">
                 <h3 className="font-serif text-lg font-semibold text-brand-950">{r.title}</h3>
-                <p className="mt-2 text-sm leading-6 text-brand-700">{r.body}</p>
+                <p className="mt-2 text-sm leading-6 text-brand-700">
+                  {r.body}
+                  <Citations links={r.citations} />
+                </p>
               </div>
             ))}
           </div>
