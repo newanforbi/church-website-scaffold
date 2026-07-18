@@ -49,10 +49,15 @@ export default function EventsPage() {
                   {formatDate(event.date)} &middot; {event.time} &middot; {event.location}
                 </p>
                 {event.zoom && (
-                  <p className="mt-2 inline-flex items-center gap-1 rounded-full bg-brand-100 px-3 py-1 text-xs font-semibold text-brand-700">
+                  <a
+                    href={siteConfig.zoom.joinUrl}
+                    target="_blank"
+                    rel="noreferrer noopener"
+                    className="mt-2 inline-flex items-center gap-1 rounded-full bg-brand-100 px-3 py-1 text-xs font-semibold text-brand-700 hover:bg-brand-200"
+                  >
                     Zoom Meeting ID: {siteConfig.zoom.meetingId} &middot; Passcode:{" "}
                     {siteConfig.zoom.passcode}
-                  </p>
+                  </a>
                 )}
                 <p className="mt-2 max-w-2xl text-sm leading-6 text-brand-800">
                   {event.description}
