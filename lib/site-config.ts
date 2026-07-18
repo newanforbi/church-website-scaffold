@@ -139,8 +139,15 @@ export const siteConfig = {
   },
 
   give: {
-    // Replace with your real giving platform link (Tithe.ly, Pushpay, Planning Center, etc.)
-    onlineGivingUrl: "https://example.com/give",
+    cashApp: {
+      cashtag: "$rccgorunshi",
+      url: "https://cash.app/$rccgorunshi",
+    },
+    zelle: {
+      // Zelle has no universal "click to pay" link — recipients are added
+      // manually in each sender's own banking app using this identifier.
+      recipient: "rccgorunshi@gmail.com",
+    },
   },
 } as const;
 
