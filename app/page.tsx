@@ -54,18 +54,18 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="mx-auto w-full max-w-[16rem] lg:mx-0 lg:justify-self-end">
-            <div className="rounded-2xl border border-white/20 bg-white/10 p-3 backdrop-blur">
+          <div className="mx-auto w-full max-w-sm lg:mx-0 lg:justify-self-end">
+            <div className="rounded-2xl border border-white/20 bg-white/10 p-4 backdrop-blur">
               <div className="relative aspect-square overflow-hidden rounded-xl">
                 <Image
                   src="/images/pastor-and-mrs.jpg"
                   alt="Pastors Lanre and Nike Ejibunu"
                   fill
                   className="object-cover"
-                  sizes="(min-width: 1024px) 16rem, 60vw"
+                  sizes="(min-width: 1024px) 24rem, 80vw"
                 />
               </div>
-              <p className="mt-3 text-center text-sm font-semibold text-white">
+              <p className="mt-4 text-center text-base font-semibold text-white">
                 Pastors Lanre &amp; Nike Ejibunu
               </p>
             </div>
