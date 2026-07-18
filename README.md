@@ -32,9 +32,9 @@ Recurring gatherings (Sunday services, Shiloh Hour, Digging Deep, Power Night) l
 
 Global styling (colors, fonts) lives in `tailwind.config.ts` and `app/globals.css`.
 
-## Contact Form
+## Contact
 
-`app/api/contact/route.ts` is a Vercel Edge Function that validates and receives submissions from the contact form (`components/contact-form.tsx`). Wire up an email provider (e.g. [Resend](https://resend.com), Postmark) or a CRM webhook where noted in that file, and add any required secrets to `.env.local` (see `.env.example`).
+The Contact page links directly to the church's phone number and email (`tel:`/`mailto:` links driven by `lib/site-config.ts`) rather than a custom form — no email service or secrets required. If you want an actual on-site contact form later, you'll need an email provider (e.g. [Resend](https://resend.com)) or a form-forwarding service, plus an API route to handle submissions.
 
 ## Deploying to Vercel
 

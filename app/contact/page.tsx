@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { PageHero } from "@/components/page-hero";
-import { ContactForm } from "@/components/contact-form";
 import { siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = {
@@ -14,18 +13,23 @@ export default function ContactPage() {
       <PageHero
         eyebrow="We'd Love to Hear From You"
         title="Contact Us"
-        description="Have a question, prayer request, or want to learn more? Send us a message."
+        description="Have a question or a prayer request? Reach us directly by phone or email."
       />
 
-      <section className="container-page grid gap-12 py-16 lg:grid-cols-2">
-        <div>
-          <h2 className="section-heading">Send a Message</h2>
-          <ContactForm />
+      <section className="container-page py-16">
+        <div className="mx-auto max-w-2xl text-center">
+          <div className="flex flex-wrap justify-center gap-4">
+            <a href={`tel:${siteConfig.contact.phone}`} className="btn-primary">
+              Call Us: {siteConfig.contact.phone}
+            </a>
+            <a href={`mailto:${siteConfig.contact.email}`} className="btn-outline">
+              Email Us
+            </a>
+          </div>
         </div>
 
-        <div>
-          <h2 className="section-heading">Visit Us</h2>
-          <dl className="mt-6 space-y-4 text-sm text-brand-800">
+        <div className="mx-auto mt-12 max-w-2xl">
+          <dl className="space-y-4 text-sm text-brand-800">
             <div>
               <dt className="font-semibold text-brand-950">Address</dt>
               <dd>
