@@ -31,6 +31,25 @@ export default function EventsPage() {
         description="Our services and prayer gatherings repeat every week — here are the next several on the calendar."
       />
 
+      <section className="container-page pt-16 text-center">
+        <a
+          href={siteConfig.zoom.joinUrl}
+          target="_blank"
+          rel="noreferrer noopener"
+          className="btn-primary"
+        >
+          Watch Live Online
+        </a>
+        <a
+          href={siteConfig.zoom.joinUrl}
+          target="_blank"
+          rel="noreferrer noopener"
+          className="mt-3 block text-sm text-brand-600 underline decoration-brand-600/40 hover:text-brand-800"
+        >
+          Zoom Meeting ID: {siteConfig.zoom.meetingId} &middot; Passcode: {siteConfig.zoom.passcode}
+        </a>
+      </section>
+
       <section className="container-page py-16">
         <ul className="divide-y divide-brand-900/10">
           {events.map((event) => (
