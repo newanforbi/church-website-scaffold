@@ -95,8 +95,10 @@ export default function ContactPage() {
                   Join our Zoom Meeting
                 </a>
                 <br />
-                Meeting ID: {siteConfig.zoom.meetingId} &middot; Passcode:{" "}
-                {siteConfig.zoom.passcode}
+                <a href={siteConfig.zoom.joinUrl} target="_blank" rel="noreferrer noopener" className="hover:text-brand-700">
+                  Meeting ID: {siteConfig.zoom.meetingId} &middot; Passcode:{" "}
+                  {siteConfig.zoom.passcode}
+                </a>
               </dd>
             </div>
           </dl>

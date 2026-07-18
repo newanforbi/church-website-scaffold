@@ -62,10 +62,15 @@ export default function HomePage() {
                 Watch Live Online
               </a>
             </div>
-            <p className="mt-3 text-xs text-brand-300">
+            <a
+              href={siteConfig.zoom.joinUrl}
+              target="_blank"
+              rel="noreferrer noopener"
+              className="mt-3 inline-block text-xs text-brand-300 underline decoration-brand-300/50 hover:text-white"
+            >
               Zoom Meeting ID: {siteConfig.zoom.meetingId} &middot; Passcode:{" "}
               {siteConfig.zoom.passcode}
-            </p>
+            </a>
           </div>
 
           <div className="mx-auto w-full max-w-sm lg:mx-0 lg:justify-self-end">
@@ -113,10 +118,15 @@ export default function HomePage() {
                       <p className="text-sm font-medium text-brand-950">{item.label}</p>
                       {item.detail && <p className="text-xs text-brand-600">{item.detail}</p>}
                       {item.zoom && (
-                        <p className="mt-1 text-xs font-semibold text-brand-700">
+                        <a
+                          href={siteConfig.zoom.joinUrl}
+                          target="_blank"
+                          rel="noreferrer noopener"
+                          className="mt-1 inline-block text-xs font-semibold text-brand-700 underline decoration-brand-700/40 hover:text-brand-900"
+                        >
                           Zoom ID {siteConfig.zoom.meetingId} &middot; Passcode{" "}
                           {siteConfig.zoom.passcode}
-                        </p>
+                        </a>
                       )}
                     </li>
                   ))}
@@ -227,10 +237,15 @@ export default function HomePage() {
                       {event.time} &middot; {event.location}
                     </p>
                     {event.zoom && (
-                      <p className="mt-1 text-xs font-semibold text-gold-400">
+                      <a
+                        href={siteConfig.zoom.joinUrl}
+                        target="_blank"
+                        rel="noreferrer noopener"
+                        className="mt-1 inline-block text-xs font-semibold text-gold-400 underline decoration-gold-400/40 hover:text-gold-500"
+                      >
                         Zoom ID {siteConfig.zoom.meetingId} &middot; Passcode{" "}
                         {siteConfig.zoom.passcode}
-                      </p>
+                      </a>
                     )}
                   </div>
                 </li>
