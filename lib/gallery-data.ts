@@ -7,7 +7,7 @@ export type GalleryImage = {
 
 // Drop image files into /public/gallery and reference them here.
 // See public/gallery/README.md for naming and sizing tips.
-export const galleryImages: GalleryImage[] = [
+const flyers: GalleryImage[] = [
   {
     slug: "welcome-to-worship",
     src: "/gallery/welcome-to-worship.jpg",
@@ -39,3 +39,17 @@ export const galleryImages: GalleryImage[] = [
     caption: "Shiloh Hour prayer line — Mondays & Fridays, 12 PM",
   },
 ];
+
+// Photos pulled from the church's Facebook page. Rename slug/src or add
+// a caption per entry once you know what each one shows.
+const PHOTO_COUNT = 29;
+const photos: GalleryImage[] = Array.from({ length: PHOTO_COUNT }, (_, i) => {
+  const n = String(i + 1).padStart(2, "0");
+  return {
+    slug: `photo-${n}`,
+    src: `/gallery/photo-${n}.jpg`,
+    alt: "Photo from RCCG Open Heavens Parish (OrunShi)",
+  };
+});
+
+export const galleryImages: GalleryImage[] = [...flyers, ...photos];
