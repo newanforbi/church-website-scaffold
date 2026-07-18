@@ -212,7 +212,7 @@ export default function HomePage() {
               {latestSermon.summary}
             </p>
             <Link href="/sermons" className="btn-secondary mt-6">
-              View All Sermons
+              View All Sermons and Open Heavens
             </Link>
           </div>
 
