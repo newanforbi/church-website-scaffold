@@ -177,11 +177,15 @@ export default function HomePage() {
               here automatically.
             </p>
           </div>
-          <div className="mx-auto mt-10 max-w-3xl">
+          <div className="mx-auto mt-10 max-w-5xl">
             <YouTubeFeed
               channelId={siteConfig.youtube.channelId}
               title={`${siteConfig.name} on YouTube`}
             />
+            <p className="mt-3 text-center text-xs text-brand-600">
+              Browsing on a phone? Tap the playlist icon in the top-left of the player to scroll
+              through past videos.
+            </p>
           </div>
           <div className="mt-6 text-center">
             <a
