@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { siteConfig } from "@/lib/site-config";
 
@@ -10,16 +11,17 @@ export function Footer() {
         <div>
           <p className="font-serif text-lg font-semibold text-white">{siteConfig.name}</p>
           <p className="mt-3 text-sm leading-6 text-brand-200">{siteConfig.tagline}</p>
-          <ul className="mt-4 flex gap-4">
+          <ul className="mt-4 flex gap-3">
             {siteConfig.social.map((s) => (
               <li key={s.label}>
                 <a
                   href={s.href}
                   target="_blank"
                   rel="noreferrer noopener"
-                  className="text-sm text-brand-200 hover:text-white"
+                  className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 transition-colors hover:bg-white/20"
                 >
-                  {s.label}
+                  <span className="sr-only">{s.label}</span>
+                  <Image src={s.icon} alt="" width={20} height={20} className="rounded-sm" />
                 </a>
               </li>
             ))}
