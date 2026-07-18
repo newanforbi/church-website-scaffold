@@ -18,19 +18,20 @@ export function GalleryLightbox({ images }: { images: GalleryImage[] }) {
 
   return (
     <>
-      <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
+      <div className="columns-2 gap-4 sm:columns-3 lg:columns-4">
         {images.map((image, i) => (
           <button
             key={image.slug}
             type="button"
             onClick={() => setOpenIndex(i)}
-            className="group relative aspect-square overflow-hidden rounded-xl bg-brand-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-700"
+            className="group relative mb-4 block w-full break-inside-avoid overflow-hidden rounded-xl bg-brand-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-700"
           >
             <Image
               src={image.src}
               alt={image.alt}
-              fill
-              className="object-cover transition-transform duration-200 group-hover:scale-105"
+              width={image.width}
+              height={image.height}
+              className="h-auto w-full object-cover transition-transform duration-200 group-hover:scale-105"
               sizes="(min-width: 1024px) 25vw, (min-width: 640px) 33vw, 50vw"
             />
           </button>
@@ -70,7 +71,10 @@ export function GalleryLightbox({ images }: { images: GalleryImage[] }) {
             className="relative max-h-[80vh] w-full max-w-3xl"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="relative aspect-[4/3] w-full">
+            <div
+              className="relative mx-auto w-full max-h-[70vh]"
+              style={{ aspectRatio: `${openImage.width} / ${openImage.height}` }}
+            >
               <Image
                 src={openImage.src}
                 alt={openImage.alt}
