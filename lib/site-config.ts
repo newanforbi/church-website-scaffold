@@ -64,6 +64,10 @@ export const siteConfig = {
     { label: "YouTube", href: "https://www.youtube.com/channel/UCEYR_1SJIV8MtbTvoV0c3LA" },
   ] satisfies SocialLink[],
 
+  youtube: {
+    channelId: "UCEYR_1SJIV8MtbTvoV0c3LA",
+  },
+
   give: {
     // Replace with your real giving platform link (Tithe.ly, Pushpay, Planning Center, etc.)
     onlineGivingUrl: "https://example.com/give",

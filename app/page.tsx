@@ -3,6 +3,7 @@ import Link from "next/link";
 import { siteConfig } from "@/lib/site-config";
 import { sermons } from "@/lib/sermons-data";
 import { events } from "@/lib/events-data";
+import { YouTubeFeed } from "@/components/youtube-feed";
 
 function formatDate(dateStr: string) {
   return new Date(dateStr).toLocaleDateString("en-US", {
@@ -87,6 +88,37 @@ export default function HomePage() {
             <Link href="/about" className="mt-6 inline-flex text-sm font-semibold text-brand-700 hover:text-brand-900">
               Learn more about us &rarr;
             </Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-brand-50 py-20">
+        <div className="container-page">
+          <div className="mx-auto max-w-2xl text-center">
+            <p className="text-sm font-semibold uppercase tracking-wide text-brand-600">
+              Watch & Listen
+            </p>
+            <h2 className="section-heading mt-2">Latest From Our YouTube Channel</h2>
+            <p className="mt-4 text-base leading-7 text-brand-800">
+              Catch our services, messages, and Shiloh Hour moments &mdash; new uploads show up
+              here automatically.
+            </p>
+          </div>
+          <div className="mx-auto mt-10 max-w-3xl">
+            <YouTubeFeed
+              channelId={siteConfig.youtube.channelId}
+              title={`${siteConfig.name} on YouTube`}
+            />
+          </div>
+          <div className="mt-6 text-center">
+            <a
+              href={`https://www.youtube.com/channel/${siteConfig.youtube.channelId}`}
+              target="_blank"
+              rel="noreferrer noopener"
+              className="btn-primary"
+            >
+              Visit Our YouTube Channel
+            </a>
           </div>
         </div>
       </section>
