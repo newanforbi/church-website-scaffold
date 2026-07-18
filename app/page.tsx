@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { siteConfig } from "@/lib/site-config";
+import { siteConfig, getMapsUrl } from "@/lib/site-config";
 import { sermons } from "@/lib/sermons-data";
 import { getUpcomingEvents } from "@/lib/recurring-events";
 import { YouTubeFeed } from "@/components/youtube-feed";
@@ -45,9 +45,14 @@ export default function HomePage() {
               {siteConfig.description}
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
-              <Link href="/about" className="btn-primary">
+              <a
+                href={getMapsUrl()}
+                target="_blank"
+                rel="noreferrer noopener"
+                className="btn-primary"
+              >
                 Plan Your Visit
-              </Link>
+              </a>
               <a
                 href={siteConfig.zoom.joinUrl}
                 target="_blank"

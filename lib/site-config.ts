@@ -143,3 +143,12 @@ export const siteConfig = {
     onlineGivingUrl: "https://example.com/give",
   },
 } as const;
+
+// A Google Maps search link for the church address. Works cross-platform:
+// opens the Google Maps app when installed (iOS or Android), otherwise
+// falls back to the Google Maps website in the browser.
+export function getMapsUrl(): string {
+  const { line1, city, state, zip } = siteConfig.contact.address;
+  const query = `${line1}, ${city}, ${state} ${zip}`;
+  return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
+}
