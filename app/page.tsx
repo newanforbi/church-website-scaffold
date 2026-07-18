@@ -29,23 +29,42 @@ export default function HomePage() {
           sizes="100vw"
         />
         <div className="absolute inset-0 bg-hero-gradient" />
-        <div className="container-page relative flex min-h-[32rem] flex-col justify-center py-24 sm:min-h-[36rem]">
-          <p className="text-sm font-semibold uppercase tracking-widest text-gold-400">
-            {siteConfig.contact.address.city}, {siteConfig.contact.address.state}
-          </p>
-          <h1 className="mt-4 max-w-2xl font-serif text-4xl font-semibold leading-tight text-white sm:text-6xl">
-            {siteConfig.tagline}
-          </h1>
-          <p className="mt-6 max-w-xl text-lg leading-8 text-brand-100">
-            {siteConfig.description}
-          </p>
-          <div className="mt-8 flex flex-wrap gap-4">
-            <Link href="/about" className="btn-primary">
-              Plan Your Visit
-            </Link>
-            <Link href="/sermons" className="btn-secondary">
-              Watch Online
-            </Link>
+        <div className="container-page relative grid min-h-[32rem] gap-10 py-24 sm:min-h-[36rem] lg:grid-cols-[1.3fr_1fr] lg:items-center">
+          <div className="flex flex-col justify-center">
+            <p className="text-sm font-semibold uppercase tracking-widest text-gold-400">
+              {siteConfig.contact.address.city}, {siteConfig.contact.address.state}
+            </p>
+            <h1 className="mt-4 max-w-2xl font-serif text-4xl font-semibold leading-tight text-white sm:text-6xl">
+              {siteConfig.tagline}
+            </h1>
+            <p className="mt-6 max-w-xl text-lg leading-8 text-brand-100">
+              {siteConfig.description}
+            </p>
+            <div className="mt-8 flex flex-wrap gap-4">
+              <Link href="/about" className="btn-primary">
+                Plan Your Visit
+              </Link>
+              <Link href="/sermons" className="btn-secondary">
+                Watch Online
+              </Link>
+            </div>
+          </div>
+
+          <div className="mx-auto w-full max-w-[16rem] lg:mx-0 lg:justify-self-end">
+            <div className="rounded-2xl border border-white/20 bg-white/10 p-3 backdrop-blur">
+              <div className="relative aspect-square overflow-hidden rounded-xl">
+                <Image
+                  src="/images/pastor-and-mrs.jpg"
+                  alt="Pastors Lanre and Nike Ejibunu"
+                  fill
+                  className="object-cover"
+                  sizes="(min-width: 1024px) 16rem, 60vw"
+                />
+              </div>
+              <p className="mt-3 text-center text-sm font-semibold text-white">
+                Pastors Lanre &amp; Nike Ejibunu
+              </p>
+            </div>
           </div>
         </div>
       </section>
