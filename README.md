@@ -51,7 +51,7 @@ Every push to your default branch redeploys production; every PR gets its own pr
 
 - Replace `url` in `lib/site-config.ts` with your production domain (used for metadata, sitemap, and robots.txt).
 - Replace the placeholder Unsplash images in `app/page.tsx` and `app/about/page.tsx` with real photos.
-- Set `give.onlineGivingUrl` in `lib/site-config.ts` to your real giving platform link.
+- Keep `give.cashApp` and `give.zelle` in `lib/site-config.ts` up to date with your real Cash App $Cashtag and Zelle recipient.
 
 ## Scripts
 
