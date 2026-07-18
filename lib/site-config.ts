@@ -45,7 +45,7 @@ export const siteConfig = {
       state: "CA",
       zip: "95207",
     },
-    pastor: "Ass't Pastor Lanre A. Ejibunu",
+    pastor: "Pastor Lanre A. Ejibunu",
     prayerLine: {
       phone: "(757) 841-1355",
       passcode: "7777862",
