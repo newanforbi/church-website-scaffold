@@ -1,0 +1,157 @@
+import Image from "next/image";
+import Link from "next/link";
+import { siteConfig } from "@/lib/site-config";
+import { sermons } from "@/lib/sermons-data";
+import { events } from "@/lib/events-data";
+
+function formatDate(dateStr: string) {
+  return new Date(dateStr).toLocaleDateString("en-US", {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+  });
+}
+
+export default function HomePage() {
+  const latestSermon = sermons[0];
+  const upcomingEvents = events.slice(0, 3);
+
+  return (
+    <>
+      <section className="relative isolate overflow-hidden bg-brand-950">
+        <Image
+          src="https://images.unsplash.com/photo-1438032005730-c779502df39b?auto=format&fit=crop&w=1920&q=80"
+          alt=""
+          fill
+          priority
+          className="object-cover opacity-60"
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 bg-hero-gradient" />
+        <div className="container-page relative flex min-h-[32rem] flex-col justify-center py-24 sm:min-h-[36rem]">
+          <p className="text-sm font-semibold uppercase tracking-widest text-gold-400">
+            {siteConfig.contact.address.city}, {siteConfig.contact.address.state}
+          </p>
+          <h1 className="mt-4 max-w-2xl font-serif text-4xl font-semibold leading-tight text-white sm:text-6xl">
+            {siteConfig.tagline}
+          </h1>
+          <p className="mt-6 max-w-xl text-lg leading-8 text-brand-100">
+            {siteConfig.description}
+          </p>
+          <div className="mt-8 flex flex-wrap gap-4">
+            <Link href="/about" className="btn-primary">
+              Plan Your Visit
+            </Link>
+            <Link href="/sermons" className="btn-secondary">
+              Watch Online
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="border-b border-brand-900/10 bg-brand-50">
+        <div className="container-page grid gap-8 py-10 sm:grid-cols-3">
+          {siteConfig.serviceTimes.map((s) => (
+            <div key={s.label} className="text-center sm:text-left">
+              <p className="text-sm font-semibold uppercase tracking-wide text-brand-600">
+                {s.label}
+              </p>
+              <p className="mt-1 font-serif text-2xl font-semibold text-brand-950">{s.time}</p>
+              {s.location && <p className="text-sm text-brand-700">{s.location}</p>}
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="container-page py-20">
+        <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
+          <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
+            <Image
+              src="https://images.unsplash.com/photo-1529070538774-1843cb3265df?auto=format&fit=crop&w=1200&q=80"
+              alt="Congregation gathered in worship"
+              fill
+              className="object-cover"
+              sizes="(min-width: 1024px) 40vw, 100vw"
+            />
+          </div>
+          <div>
+            <p className="text-sm font-semibold uppercase tracking-wide text-brand-600">
+              Welcome Home
+            </p>
+            <h2 className="section-heading mt-2">You belong here.</h2>
+            <p className="mt-4 text-base leading-7 text-brand-800">
+              Whatever brought you here today, we&apos;re glad you found us. {siteConfig.name} is
+              a community of people from every background who are learning together what it
+              means to follow Jesus. Come as you are &mdash; there&apos;s a seat for you.
+            </p>
+            <Link href="/about" className="mt-6 inline-flex text-sm font-semibold text-brand-700 hover:text-brand-900">
+              Learn more about us &rarr;
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-brand-950 py-20">
+        <div className="container-page grid gap-12 lg:grid-cols-2">
+          <div>
+            <p className="text-sm font-semibold uppercase tracking-wide text-gold-400">
+              Latest Message
+            </p>
+            <h2 className="mt-2 font-serif text-3xl font-semibold text-white sm:text-4xl">
+              {latestSermon.title}
+            </h2>
+            <p className="mt-3 text-sm text-brand-300">
+              {latestSermon.speaker} &middot; {formatDate(latestSermon.date)}
+            </p>
+            <p className="mt-4 max-w-xl text-base leading-7 text-brand-200">
+              {latestSermon.summary}
+            </p>
+            <Link href="/sermons" className="btn-secondary mt-6">
+              View All Sermons
+            </Link>
+          </div>
+
+          <div>
+            <p className="text-sm font-semibold uppercase tracking-wide text-gold-400">
+              Upcoming Events
+            </p>
+            <ul className="mt-4 divide-y divide-white/10">
+              {upcomingEvents.map((event) => (
+                <li key={event.slug} className="flex items-center gap-4 py-4">
+                  <div className="flex w-16 shrink-0 flex-col items-center rounded-md bg-white/10 py-2 text-white">
+                    <span className="text-xs font-semibold uppercase">
+                      {new Date(event.date).toLocaleDateString("en-US", { month: "short" })}
+                    </span>
+                    <span className="font-serif text-xl font-semibold">
+                      {new Date(event.date).getDate()}
+                    </span>
+                  </div>
+                  <div>
+                    <p className="font-semibold text-white">{event.title}</p>
+                    <p className="text-sm text-brand-300">
+                      {event.time} &middot; {event.location}
+                    </p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+            <Link href="/events" className="btn-secondary mt-2">
+              See All Events
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="container-page py-20 text-center">
+        <h2 className="section-heading">Generosity changes everything.</h2>
+        <p className="mx-auto mt-4 max-w-xl text-base leading-7 text-brand-800">
+          Your giving supports our ministries, our staff, and our mission in{" "}
+          {siteConfig.contact.address.city} and beyond. Thank you for partnering with us.
+        </p>
+        <Link href="/give" className="btn-primary mt-6">
+          Give Online
+        </Link>
+      </section>
+    </>
+  );
+}
