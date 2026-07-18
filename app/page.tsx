@@ -69,17 +69,37 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="border-b border-brand-900/10 bg-brand-50">
-        <div className="container-page grid gap-8 py-10 sm:grid-cols-3">
-          {siteConfig.serviceTimes.map((s) => (
-            <div key={s.label} className="text-center sm:text-left">
-              <p className="text-sm font-semibold uppercase tracking-wide text-brand-600">
-                {s.label}
-              </p>
-              <p className="mt-1 font-serif text-2xl font-semibold text-brand-950">{s.time}</p>
-              {s.location && <p className="text-sm text-brand-700">{s.location}</p>}
-            </div>
-          ))}
+      <section className="border-b border-brand-900/10 bg-brand-50 py-16">
+        <div className="container-page">
+          <div className="mx-auto max-w-2xl text-center">
+            <p className="text-sm font-semibold uppercase tracking-wide text-brand-600">
+              This Week
+            </p>
+            <h2 className="section-heading mt-2">Join Us Throughout the Week</h2>
+            <p className="mt-4 text-base leading-7 text-brand-800">
+              From Sunday worship to midweek prayer, there&apos;s a place for you every week.
+            </p>
+          </div>
+
+          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {siteConfig.weeklySchedule.map((day) => (
+              <div
+                key={day.day}
+                className="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-brand-900/5"
+              >
+                <p className="font-serif text-lg font-semibold text-brand-950">{day.day}</p>
+                <ul className="mt-4 space-y-4">
+                  {day.items.map((item) => (
+                    <li key={item.label}>
+                      <p className="text-sm font-semibold text-brand-700">{item.time}</p>
+                      <p className="text-sm font-medium text-brand-950">{item.label}</p>
+                      {item.detail && <p className="text-xs text-brand-600">{item.detail}</p>}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 

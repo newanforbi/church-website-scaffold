@@ -4,6 +4,17 @@ export type ServiceTime = {
   location?: string;
 };
 
+export type WeeklyScheduleItem = {
+  label: string;
+  time: string;
+  detail?: string;
+};
+
+export type WeeklyScheduleDay = {
+  day: string;
+  items: WeeklyScheduleItem[];
+};
+
 export type NavLink = {
   label: string;
   href: string;
@@ -46,12 +57,58 @@ export const siteConfig = {
     { label: "Digging Deep (Bible Study)", time: "Wed, 7:00–8:00 PM", location: "In-person & online" },
   ] satisfies ServiceTime[],
 
+  // Full recurring weekly schedule, for the prominent "This Week" section on the home page.
+  weeklySchedule: [
+    {
+      day: "Sunday",
+      items: [
+        { label: "Sunday School", time: "9:30 AM", detail: "In-person & online" },
+        { label: "Sunday Worship", time: "10:30 AM", detail: "In-person & online" },
+      ],
+    },
+    {
+      day: "Monday",
+      items: [
+        {
+          label: "Shiloh Hour Prayer Line",
+          time: "12:00 PM",
+          detail: "Call (757) 841-1355, passcode 7777862",
+        },
+      ],
+    },
+    {
+      day: "Wednesday",
+      items: [
+        {
+          label: "Shiloh Hour (in Yoruba)",
+          time: "12:00 PM",
+          detail: "Call (757) 841-1355, passcode 7777862",
+        },
+        { label: "Digging Deep Bible Study", time: "7:00–8:00 PM", detail: "In-person & online" },
+      ],
+    },
+    {
+      day: "Friday",
+      items: [
+        {
+          label: "Shiloh Hour Prayer Line",
+          time: "12:00 PM",
+          detail: "Call (757) 841-1355, passcode 7777862",
+        },
+        {
+          label: "Power Night",
+          time: "7:00–9:00 PM",
+          detail: "First Friday of the month · Holy Communion",
+        },
+      ],
+    },
+  ] satisfies WeeklyScheduleDay[],
+
   nav: [
     { label: "Home", href: "/" },
     { label: "About", href: "/about" },
     { label: "Sermons", href: "/sermons" },
     { label: "Events", href: "/events" },
-    { label: "Gallery", href: "/gallery" },
     { label: "Give", href: "/give" },
     { label: "Contact", href: "/contact" },
   ] satisfies NavLink[],
