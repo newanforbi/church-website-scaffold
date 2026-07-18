@@ -51,6 +51,12 @@ export const siteConfig = {
     },
   },
 
+  zoom: {
+    joinUrl: "https://us02web.zoom.us/launch/jc/82688789594",
+    meetingId: "952 830 0906",
+    passcode: "788701",
+  },
+
   serviceTimes: [
     { label: "Sunday School", time: "9:30 AM", location: "In-person & online" },
     { label: "Sunday Worship", time: "10:30 AM", location: "In-person & online" },
