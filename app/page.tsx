@@ -48,10 +48,19 @@ export default function HomePage() {
               <Link href="/about" className="btn-primary">
                 Plan Your Visit
               </Link>
-              <Link href="/sermons" className="btn-secondary">
-                Watch Online
-              </Link>
+              <a
+                href={siteConfig.zoom.joinUrl}
+                target="_blank"
+                rel="noreferrer noopener"
+                className="btn-secondary"
+              >
+                Watch Live Online
+              </a>
             </div>
+            <p className="mt-3 text-xs text-brand-300">
+              Zoom Meeting ID: {siteConfig.zoom.meetingId} &middot; Passcode:{" "}
+              {siteConfig.zoom.passcode}
+            </p>
           </div>
 
           <div className="mx-auto w-full max-w-sm lg:mx-0 lg:justify-self-end">

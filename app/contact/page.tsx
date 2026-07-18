@@ -83,6 +83,22 @@ export default function ContactPage() {
                 {siteConfig.contact.prayerLine.schedule}
               </dd>
             </div>
+            <div>
+              <dt className="font-semibold text-brand-950">Watch Live Online</dt>
+              <dd>
+                <a
+                  href={siteConfig.zoom.joinUrl}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  className="hover:text-brand-700"
+                >
+                  Join our Zoom Meeting
+                </a>
+                <br />
+                Meeting ID: {siteConfig.zoom.meetingId} &middot; Passcode:{" "}
+                {siteConfig.zoom.passcode}
+              </dd>
+            </div>
           </dl>
         </div>
       </section>
