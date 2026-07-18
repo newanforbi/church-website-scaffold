@@ -27,14 +27,15 @@ export default function SermonsPage() {
       />
 
       <section className="container-page py-16">
-        <div className="mx-auto max-w-3xl">
+        <div className="mx-auto max-w-5xl">
           <YouTubeFeed
             channelId={siteConfig.youtube.channelId}
             title={`${siteConfig.name} on YouTube`}
           />
           <p className="mt-4 text-center text-sm text-brand-600">
-            Every upload from our channel, most recent first &mdash; scroll the list on the right
-            to browse the full archive.
+            Every upload from our channel, most recent first &mdash; scroll the playlist panel to
+            browse the full archive. On a phone, tap the playlist icon in the top-left of the
+            player to open that list.
           </p>
           <div className="mt-4 text-center">
             <a
