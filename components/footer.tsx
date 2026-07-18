@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { siteConfig } from "@/lib/site-config";
+import { siteConfig, toTelHref } from "@/lib/site-config";
 
 export function Footer() {
   const year = new Date().getFullYear();
@@ -67,12 +67,12 @@ export function Footer() {
               {siteConfig.contact.address.zip}
             </li>
             <li>
-              <a href={`tel:${siteConfig.contact.phone}`} className="hover:text-white">
+              <a href={toTelHref(siteConfig.contact.phone)} className="hover:text-white">
                 {siteConfig.contact.phone}
               </a>
             </li>
             <li>
-              <a href={`tel:${siteConfig.contact.phoneSecondary}`} className="hover:text-white">
+              <a href={toTelHref(siteConfig.contact.phoneSecondary)} className="hover:text-white">
                 {siteConfig.contact.phoneSecondary}
               </a>
             </li>

@@ -170,3 +170,10 @@ export function getMapsUrl(): string {
   const query = `${line1}, ${city}, ${state} ${zip}`;
   return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
 }
+
+// Strips display formatting from a phone number for use in a tel: href
+// (e.g. "(832) 382-1450" -> "+18323821450"). Keeps a leading "+" if present.
+export function toTelHref(phone: string): string {
+  const digits = phone.replace(/[^\d+]/g, "");
+  return `tel:${digits.startsWith("+") ? digits : `+1${digits}`}`;
+}

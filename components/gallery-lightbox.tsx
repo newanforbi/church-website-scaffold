@@ -31,6 +31,7 @@ export function GalleryLightbox({ images }: { images: GalleryImage[] }) {
               alt={image.alt}
               width={image.width}
               height={image.height}
+              priority={i < 8 || image.width !== 206}
               className="h-auto w-full object-cover transition-transform duration-200 group-hover:scale-105"
               sizes="(min-width: 1024px) 25vw, (min-width: 640px) 33vw, 50vw"
             />
