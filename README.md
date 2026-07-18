@@ -27,7 +27,8 @@ Almost everything site-specific lives in one file: **`lib/site-config.ts`**. Upd
 Sample content used as placeholders:
 
 - `lib/sermons-data.ts` &mdash; swap for a CMS or database query later
-- `lib/events-data.ts` &mdash; same idea for events
+
+Recurring gatherings (Sunday services, Shiloh Hour, Digging Deep, Power Night) live in `lib/recurring-events.ts` as day/time rules, not fixed dates. The "Upcoming Events" sections compute the next real occurrences from those rules on every request (revalidated hourly), so they stay accurate indefinitely — add, remove, or edit a rule there rather than a list of dates.
 
 Global styling (colors, fonts) lives in `tailwind.config.ts` and `app/globals.css`.
 

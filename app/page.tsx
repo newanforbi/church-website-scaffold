@@ -2,8 +2,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { siteConfig } from "@/lib/site-config";
 import { sermons } from "@/lib/sermons-data";
-import { events } from "@/lib/events-data";
+import { getUpcomingEvents } from "@/lib/recurring-events";
 import { YouTubeFeed } from "@/components/youtube-feed";
+
+// Revalidate periodically so "Upcoming Events" always reflects real
+// dates relative to today, without needing a redeploy.
+export const revalidate = 3600;
 
 function formatDate(dateStr: string) {
   return new Date(dateStr).toLocaleDateString("en-US", {
@@ -15,7 +19,7 @@ function formatDate(dateStr: string) {
 
 export default function HomePage() {
   const latestSermon = sermons[0];
-  const upcomingEvents = events.slice(0, 3);
+  const upcomingEvents = getUpcomingEvents(3);
 
   return (
     <>
@@ -191,10 +195,10 @@ export default function HomePage() {
                 <li key={event.slug} className="flex items-center gap-4 py-4">
                   <div className="flex w-16 shrink-0 flex-col items-center rounded-md bg-white/10 py-2 text-white">
                     <span className="text-xs font-semibold uppercase">
-                      {new Date(event.date).toLocaleDateString("en-US", { month: "short" })}
+                      {event.date.toLocaleDateString("en-US", { month: "short" })}
                     </span>
                     <span className="font-serif text-xl font-semibold">
-                      {new Date(event.date).getDate()}
+                      {event.date.getDate()}
                     </span>
                   </div>
                   <div>

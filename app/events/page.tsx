@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { PageHero } from "@/components/page-hero";
-import { events } from "@/lib/events-data";
+import { getUpcomingEvents } from "@/lib/recurring-events";
 import { siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = {
@@ -8,8 +8,12 @@ export const metadata: Metadata = {
   description: `See what's happening at ${siteConfig.name}.`,
 };
 
-function formatDate(dateStr: string) {
-  return new Date(dateStr).toLocaleDateString("en-US", {
+// Revalidate periodically so this always shows real upcoming dates
+// relative to today, without needing a redeploy.
+export const revalidate = 3600;
+
+function formatDate(date: Date) {
+  return date.toLocaleDateString("en-US", {
     weekday: "long",
     month: "long",
     day: "numeric",
@@ -17,12 +21,14 @@ function formatDate(dateStr: string) {
 }
 
 export default function EventsPage() {
+  const events = getUpcomingEvents(16);
+
   return (
     <>
       <PageHero
         eyebrow="What's Happening"
         title="Events"
-        description="From weekly gatherings to community outreach, there's always something going on."
+        description="Our services and prayer gatherings repeat every week — here are the next several on the calendar."
       />
 
       <section className="container-page py-16">
@@ -31,11 +37,9 @@ export default function EventsPage() {
             <li key={event.slug} className="flex flex-col gap-4 py-8 sm:flex-row sm:items-start">
               <div className="flex w-20 shrink-0 flex-col items-center rounded-lg bg-brand-50 py-3 text-brand-900">
                 <span className="text-xs font-semibold uppercase tracking-wide">
-                  {new Date(event.date).toLocaleDateString("en-US", { month: "short" })}
+                  {event.date.toLocaleDateString("en-US", { month: "short" })}
                 </span>
-                <span className="font-serif text-2xl font-semibold">
-                  {new Date(event.date).getDate()}
-                </span>
+                <span className="font-serif text-2xl font-semibold">{event.date.getDate()}</span>
               </div>
               <div>
                 <h2 className="font-serif text-xl font-semibold text-brand-950">
