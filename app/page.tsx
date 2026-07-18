@@ -249,9 +249,19 @@ export default function HomePage() {
           Your giving supports our ministries, our staff, and our mission in{" "}
           {siteConfig.contact.address.city} and beyond. Thank you for partnering with us.
         </p>
-        <Link href="/give" className="btn-primary mt-6">
-          Give Online
-        </Link>
+        <a
+          href={siteConfig.give.cashApp.url}
+          target="_blank"
+          rel="noreferrer noopener"
+          className="btn-primary mt-6"
+        >
+          Give via Cash App
+        </a>
+        <p className="mt-3 text-sm text-brand-700">
+          Prefer Zelle? Send to{" "}
+          <span className="font-semibold text-brand-950">{siteConfig.give.zelle.recipient}</span>{" "}
+          from your banking app.
+        </p>
       </section>
     </>
   );
