@@ -51,6 +51,7 @@ export const siteConfig = {
     { label: "About", href: "/about" },
     { label: "Sermons", href: "/sermons" },
     { label: "Events", href: "/events" },
+    { label: "Gallery", href: "/gallery" },
     { label: "Give", href: "/give" },
     { label: "Contact", href: "/contact" },
   ] satisfies NavLink[],
@@ -63,6 +64,10 @@ export const siteConfig = {
     { label: "Instagram", href: "https://www.instagram.com/rccgorunshi.stockton/" },
     { label: "YouTube", href: "https://www.youtube.com/channel/UCEYR_1SJIV8MtbTvoV0c3LA" },
   ] satisfies SocialLink[],
+
+  youtube: {
+    channelId: "UCEYR_1SJIV8MtbTvoV0c3LA",
+  },
 
   give: {
     // Replace with your real giving platform link (Tithe.ly, Pushpay, Planning Center, etc.)
