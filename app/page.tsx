@@ -3,6 +3,7 @@ import Link from "next/link";
 import { siteConfig, getMapsUrl } from "@/lib/site-config";
 import { sermons } from "@/lib/sermons-data";
 import { getUpcomingEvents } from "@/lib/recurring-events";
+import { getActiveSpecialEvents } from "@/lib/special-events";
 import { YouTubeFeed } from "@/components/youtube-feed";
 
 // Revalidate periodically so "Upcoming Events" always reflects real
@@ -20,9 +21,29 @@ function formatDate(dateStr: string) {
 export default function HomePage() {
   const latestSermon = sermons[0];
   const upcomingEvents = getUpcomingEvents(3);
+  const specialEvent = getActiveSpecialEvents()[0];
 
   return (
     <>
+      {specialEvent && (
+        <section className="bg-gold-400">
+          <Link
+            href="/events"
+            className="container-page flex flex-col items-center justify-center gap-1 py-3 text-center sm:flex-row sm:gap-3"
+          >
+            <span className="text-sm font-semibold uppercase tracking-wide text-brand-950">
+              {specialEvent.title}
+            </span>
+            <span className="text-sm text-brand-950/80">
+              {specialEvent.dateLabel} &middot; {specialEvent.time}
+            </span>
+            <span className="text-sm font-semibold text-brand-950 underline">
+              Learn more &rarr;
+            </span>
+          </Link>
+        </section>
+      )}
+
       <section className="relative isolate overflow-hidden bg-brand-950">
         <Image
           src="https://images.unsplash.com/photo-1438032005730-c779502df39b?auto=format&fit=crop&w=1920&q=80"
