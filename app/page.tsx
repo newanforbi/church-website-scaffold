@@ -32,7 +32,7 @@ export default function HomePage() {
             className="container-page flex flex-col items-center justify-center gap-1 py-3 text-center sm:flex-row sm:gap-3"
           >
             <span className="text-sm font-semibold uppercase tracking-wide text-brand-950">
-              {specialEvent.title}
+              Annual Concert: {specialEvent.title}
             </span>
             <span className="text-sm text-brand-950/80">
               {specialEvent.dateLabel} &middot; {specialEvent.time}
@@ -157,6 +157,36 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {specialEvent && (
+        <section className="bg-brand-50 py-16">
+          <div className="container-page flex flex-col items-center text-center">
+            <p className="text-sm font-semibold uppercase tracking-wide text-brand-600">
+              Annual Concert
+            </p>
+            <h2 className="section-heading mt-2">{specialEvent.title}</h2>
+            <p className="mt-2 text-base text-brand-800">
+              {specialEvent.dateLabel} &middot; {specialEvent.time}
+            </p>
+            <Link
+              href="/events"
+              className="mt-6 w-full max-w-xs overflow-hidden rounded-2xl shadow-lg ring-1 ring-brand-900/10 transition hover:opacity-90 sm:max-w-sm"
+            >
+              <Image
+                src={specialEvent.image}
+                alt={specialEvent.imageAlt}
+                width={1545}
+                height={1999}
+                className="h-auto w-full"
+                sizes="(min-width: 640px) 24rem, 90vw"
+              />
+            </Link>
+            <Link href="/events" className="btn-primary mt-6">
+              View Event Details
+            </Link>
+          </div>
+        </section>
+      )}
 
       <section className="container-page py-20">
         <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
