@@ -32,7 +32,7 @@ export const siteConfig = {
   shortName: "RCCG OrunShi",
   tagline: "Grow in faith, together.",
   description:
-    "RCCG Open Heavens Parish (OrunShi) is a Stockton, CA congregation of the Redeemed Christian Church of God, established in 2020. We're committed to spiritual nourishment for our members and reaching out to our community with the love of Christ.",
+    "RCCG Open Heavens Parish (OrunShi) is a welcoming Stockton, CA congregation of the Redeemed Christian Church of God. Established in 2020, we gather for worship, prayer, and the Word — in person and online.",
   url: "https://example-church.vercel.app",
 
   contact: {
@@ -145,8 +145,20 @@ export const siteConfig = {
     },
   ] satisfies SocialLink[],
 
+  // Instagram gallery config. Full-bleed scrolling photos use the Instagram
+  // Graph API when INSTAGRAM_ACCESS_TOKEN + INSTAGRAM_USER_ID are set.
+  socialEmbeds: {
+    instagramProfileUrl: "https://www.instagram.com/rccgorunshi.stockton/",
+  },
+
   youtube: {
     channelId: "UCEYR_1SJIV8MtbTvoV0c3LA",
+    // Curated playlists from the church channel — used for dedicated
+    // Open Heavens / Salvation embeds and archive shelves on /sermons.
+    playlists: {
+      openHeavens: "PLrFVw9lktxbuvWLZNcKTQS3G6aDwEtlUD",
+      salvation: "PLrFVw9lktxbtymOVqqSVbkUHyRcm6P9Fz",
+    },
   },
 
   give: {

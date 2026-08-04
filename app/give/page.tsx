@@ -7,6 +7,40 @@ export const metadata: Metadata = {
   description: `Support the mission and ministries of ${siteConfig.name}.`,
 };
 
+const ways = [
+  {
+    title: "Cash App",
+    body: "Send a gift instantly to our Cash App account.",
+    detail: (
+      <a
+        href={siteConfig.give.cashApp.url}
+        target="_blank"
+        rel="noreferrer noopener"
+        className="mt-3 inline-block text-sm font-semibold text-brand-800 underline decoration-dawn-500/50 underline-offset-4 hover:text-brand-950"
+      >
+        {siteConfig.give.cashApp.cashtag} &rarr;
+      </a>
+    ),
+  },
+  {
+    title: "Zelle",
+    body: "Add us as a recipient in your banking app's Zelle feature.",
+    detail: (
+      <p className="mt-3 text-sm font-semibold text-brand-950">
+        {siteConfig.give.zelle.recipient}
+      </p>
+    ),
+  },
+  {
+    title: "In Person",
+    body: "Give during a Sunday service using the giving boxes at the sanctuary entrance.",
+  },
+  {
+    title: "By Mail",
+    body: `Mail a check to ${siteConfig.contact.address.line1}, ${siteConfig.contact.address.city}, ${siteConfig.contact.address.state} ${siteConfig.contact.address.zip}.`,
+  },
+];
+
 export default function GivePage() {
   return (
     <>
@@ -16,11 +50,11 @@ export default function GivePage() {
         description="Your generosity fuels our ministries, cares for our community, and reaches our city."
       />
 
-      <section className="container-page py-16 text-center">
-        <p className="mx-auto max-w-2xl text-base leading-7 text-brand-800">
-          Giving is an act of worship and trust. Every gift &mdash; large or small &mdash; helps
-          us love our neighbors, disciple our kids and students, and share hope with our city.
-          Thank you for partnering with us.
+      <section className="container-page py-20 text-center">
+        <p className="mx-auto max-w-2xl text-base leading-7 text-brand-700">
+          Giving is an act of worship and trust. Every gift — large or small — helps us love our
+          neighbors, disciple our families, and share hope with our city. Thank you for
+          partnering with us.
         </p>
         <a
           href={siteConfig.give.cashApp.url}
@@ -30,57 +64,32 @@ export default function GivePage() {
         >
           Give via Cash App
         </a>
-        <p className="mt-3 text-sm text-brand-700">
+        <p className="mt-4 text-sm text-brand-600">
           Prefer Zelle? Send to{" "}
           <span className="font-semibold text-brand-950">{siteConfig.give.zelle.recipient}</span>{" "}
           from your banking app.
         </p>
       </section>
 
-      <section className="bg-brand-50 py-16">
+      <section className="surface-mist border-t border-brand-900/10 py-20">
         <div className="container-page">
-          <h2 className="section-heading text-center">Ways to Give</h2>
-          <div className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-            <div className="rounded-xl bg-white p-6 shadow-sm ring-1 ring-brand-900/5">
-              <h3 className="font-serif text-xl font-semibold text-brand-950">Cash App</h3>
-              <p className="mt-2 text-sm leading-6 text-brand-700">
-                Send a gift to our Cash App account.
-              </p>
-              <a
-                href={siteConfig.give.cashApp.url}
-                target="_blank"
-                rel="noreferrer noopener"
-                className="mt-3 inline-block text-sm font-semibold text-brand-700 hover:text-brand-900"
+          <div className="mx-auto max-w-2xl text-center">
+            <p className="section-eyebrow">Options</p>
+            <h2 className="section-heading mt-3">Ways to Give</h2>
+          </div>
+          <div className="mx-auto mt-12 max-w-3xl divide-y divide-brand-900/10 border-y border-brand-900/10">
+            {ways.map((way) => (
+              <div
+                key={way.title}
+                className="grid gap-2 py-6 sm:grid-cols-[10rem_1fr] sm:gap-8"
               >
-                {siteConfig.give.cashApp.cashtag} &rarr;
-              </a>
-            </div>
-
-            <div className="rounded-xl bg-white p-6 shadow-sm ring-1 ring-brand-900/5">
-              <h3 className="font-serif text-xl font-semibold text-brand-950">Zelle</h3>
-              <p className="mt-2 text-sm leading-6 text-brand-700">
-                Add us as a recipient in your own banking app&apos;s Zelle feature.
-              </p>
-              <p className="mt-3 text-sm font-semibold text-brand-950">
-                {siteConfig.give.zelle.recipient}
-              </p>
-            </div>
-
-            <div className="rounded-xl bg-white p-6 shadow-sm ring-1 ring-brand-900/5">
-              <h3 className="font-serif text-xl font-semibold text-brand-950">In Person</h3>
-              <p className="mt-2 text-sm leading-6 text-brand-700">
-                Give during a Sunday service using the giving boxes at the sanctuary entrance.
-              </p>
-            </div>
-
-            <div className="rounded-xl bg-white p-6 shadow-sm ring-1 ring-brand-900/5">
-              <h3 className="font-serif text-xl font-semibold text-brand-950">By Mail</h3>
-              <p className="mt-2 text-sm leading-6 text-brand-700">
-                Mail a check to {siteConfig.contact.address.line1},{" "}
-                {siteConfig.contact.address.city}, {siteConfig.contact.address.state}{" "}
-                {siteConfig.contact.address.zip}.
-              </p>
-            </div>
+                <h3 className="font-serif text-xl font-medium text-brand-950">{way.title}</h3>
+                <div>
+                  <p className="text-sm leading-6 text-brand-700">{way.body}</p>
+                  {way.detail}
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
