@@ -92,39 +92,59 @@ export default async function HomePage() {
           aria-hidden="true"
         />
 
-        <div className="container-page relative flex min-h-[88vh] flex-col justify-end pb-16 pt-28 sm:pb-20 sm:pt-32">
-          <h1 className="animate-fade-up font-serif text-4xl font-medium tracking-tight text-white sm:text-6xl lg:text-7xl">
-            {siteConfig.shortName}
-          </h1>
-          <p className="mt-2 animate-fade-up text-sm font-medium uppercase tracking-[0.22em] text-dawn-400 sm:text-base">
-            Open Heavens Parish &middot; Stockton, CA
-          </p>
-          <p className="mt-6 max-w-xl animate-fade-up-delay font-serif text-2xl font-medium leading-snug text-white/95 sm:text-3xl">
-            {siteConfig.tagline}
-          </p>
-          <p className="mt-4 max-w-lg animate-fade-up-delay text-base leading-7 text-brand-100">
-            A welcoming RCCG family gathering for worship, prayer, and the Word — in person and
-            online.
-          </p>
-          <div className="mt-8 flex flex-wrap gap-4 animate-fade-up-delay-2">
-            <a
-              href={getMapsUrl()}
-              target="_blank"
-              rel="noreferrer noopener"
-              className="btn-primary"
-            >
-              Plan Your Visit
-            </a>
-            <a
-              href={siteConfig.zoom.joinUrl}
-              target="_blank"
-              rel="noreferrer noopener"
-              className="btn-secondary"
-            >
-              Watch Live Online
-            </a>
+        <div className="container-page relative grid min-h-[88vh] gap-10 pb-16 pt-28 sm:pb-20 sm:pt-32 lg:grid-cols-[1.3fr_1fr] lg:items-end">
+          <div className="flex flex-col justify-end">
+            <h1 className="animate-fade-up font-serif text-4xl font-medium tracking-tight text-white sm:text-6xl lg:text-7xl">
+              {siteConfig.shortName}
+            </h1>
+            <p className="mt-2 animate-fade-up text-sm font-medium uppercase tracking-[0.22em] text-dawn-400 sm:text-base">
+              Open Heavens Parish &middot; Stockton, CA
+            </p>
+            <p className="mt-6 max-w-xl animate-fade-up-delay font-serif text-2xl font-medium leading-snug text-white/95 sm:text-3xl">
+              {siteConfig.tagline}
+            </p>
+            <p className="mt-4 max-w-lg animate-fade-up-delay text-base leading-7 text-brand-100">
+              A welcoming RCCG family gathering for worship, prayer, and the Word — in person and
+              online.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-4 animate-fade-up-delay-2">
+              <a
+                href={getMapsUrl()}
+                target="_blank"
+                rel="noreferrer noopener"
+                className="btn-primary"
+              >
+                Plan Your Visit
+              </a>
+              <a
+                href={siteConfig.zoom.joinUrl}
+                target="_blank"
+                rel="noreferrer noopener"
+                className="btn-secondary"
+              >
+                Watch Live Online
+              </a>
+            </div>
+            <div className="divider-dawn mt-10 animate-draw-line" aria-hidden="true" />
           </div>
-          <div className="divider-dawn mt-10 animate-draw-line" aria-hidden="true" />
+
+          <div className="mx-auto w-full max-w-sm animate-fade-up-delay-2 lg:mx-0 lg:justify-self-end">
+            <div className="border border-white/20 bg-white/10 p-4 backdrop-blur">
+              <div className="relative aspect-square overflow-hidden">
+                <Image
+                  src="/images/pastor-and-mrs.jpg"
+                  alt="Pastors Lanre and Nike Ejibunu"
+                  fill
+                  className="object-cover"
+                  sizes="(min-width: 1024px) 24rem, 80vw"
+                  priority
+                />
+              </div>
+              <p className="mt-4 text-center text-base font-medium text-white">
+                Pastors Lanre &amp; Nike Ejibunu
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
