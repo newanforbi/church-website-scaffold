@@ -6,7 +6,7 @@ A basic, production-ready church website scaffold built with [Next.js](https://n
 
 - **Home** &mdash; hero, service times, latest sermon, upcoming events, giving CTA
 - **About** &mdash; story, beliefs, team
-- **Sermons** &mdash; message archive
+- **Sermons** &mdash; live YouTube sermons, Open Heavens devotionals, and channel archive
 - **Events** &mdash; upcoming events list
 - **Give** &mdash; online giving CTA and other ways to give
 - **Contact** &mdash; contact form backed by an API route
@@ -24,9 +24,9 @@ Open [http://localhost:3000](http://localhost:3000).
 
 Almost everything site-specific lives in one file: **`lib/site-config.ts`**. Update the church name, tagline, address, phone, email, service times, nav links, social links, and giving URL there and it propagates through the nav, footer, home page, and metadata.
 
-Sample content used as placeholders:
+YouTube content is fetched live (no API key required) in `lib/youtube.ts` from the church channel and curated playlists configured in `lib/site-config.ts` (`youtube.playlists`). The homepage and `/sermons` page revalidate hourly so new sermons and Open Heavens devotionals show up automatically.
 
-- `lib/sermons-data.ts` &mdash; swap for a CMS or database query later
+- `lib/sermons-data.ts` &mdash; fallback featured-message copy if YouTube is unreachable
 
 Recurring gatherings (Sunday services, Shiloh Hour, Digging Deep, Power Night) live in `lib/recurring-events.ts` as day/time rules, not fixed dates. The "Upcoming Events" sections compute the next real occurrences from those rules on every request (revalidated hourly), so they stay accurate indefinitely — add, remove, or edit a rule there rather than a list of dates.
 

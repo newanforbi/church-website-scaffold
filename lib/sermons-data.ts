@@ -8,7 +8,8 @@ export type Sermon = {
   videoUrl?: string;
 };
 
-// Sample content — replace with real messages, e.g. from your Facebook/YouTube archive.
+// Fallback featured-message copy if live YouTube fetches are unavailable.
+// The homepage and /sermons page prefer live uploads from lib/youtube.ts.
 export const sermons: Sermon[] = [
   {
     slug: "the-mystery-of-destiny-helpers",

@@ -4,10 +4,15 @@ import { siteConfig, getMapsUrl } from "@/lib/site-config";
 import { sermons } from "@/lib/sermons-data";
 import { getUpcomingEvents } from "@/lib/recurring-events";
 import { getActiveSpecialEvents } from "@/lib/special-events";
-import { YouTubeFeed } from "@/components/youtube-feed";
+import { YouTubeVideoShelf } from "@/components/youtube-video-shelf";
+import {
+  formatVideoDate,
+  getChannelUrl,
+  getChurchYouTubeContent,
+  getPlaylistUrl,
+} from "@/lib/youtube";
 
-// Revalidate periodically so "Upcoming Events" always reflects real
-// dates relative to today, without needing a redeploy.
+// Revalidate periodically so upcoming events and YouTube shelves stay fresh.
 export const revalidate = 3600;
 
 function formatDate(dateStr: string) {
@@ -18,10 +23,33 @@ function formatDate(dateStr: string) {
   });
 }
 
-export default function HomePage() {
-  const latestSermon = sermons[0];
+function uniqueById<T extends { id: string }>(items: T[]): T[] {
+  const seen = new Set<string>();
+  return items.filter((item) => {
+    if (seen.has(item.id)) return false;
+    seen.add(item.id);
+    return true;
+  });
+}
+
+export default async function HomePage() {
   const upcomingEvents = getUpcomingEvents(3);
   const specialEvent = getActiveSpecialEvents()[0];
+  const youtube = await getChurchYouTubeContent({
+    channelId: siteConfig.youtube.channelId,
+    openHeavensPlaylistId: siteConfig.youtube.playlists.openHeavens,
+    salvationPlaylistId: siteConfig.youtube.playlists.salvation,
+    messageLimit: 8,
+    openHeavensLimit: 8,
+  });
+
+  const featuredVideo = youtube.latestMessage || youtube.latest;
+  const fallbackSermon = sermons[0];
+  // Prefer parish messages; if the feed is thin, mix in recent Open Heavens.
+  const shelfVideos =
+    youtube.messages.length >= 4
+      ? youtube.messages
+      : uniqueById([...youtube.messages, ...youtube.openHeavens, ...youtube.recent]).slice(0, 8);
 
   return (
     <>
@@ -219,30 +247,43 @@ export default function HomePage() {
             <p className="section-eyebrow">Watch &amp; Listen</p>
             <h2 className="section-heading mt-3">Latest from our YouTube channel</h2>
             <p className="mt-4 text-base leading-7 text-brand-700">
-              Catch services, messages, and Shiloh Hour moments — new uploads appear here
-              automatically.
+              Recent sermons and services, pulled live from YouTube. Tap a title to play —
+              or explore daily Open Heavens on the sermons page.
             </p>
           </div>
-          <div className="mx-auto mt-10 max-w-5xl">
-            <YouTubeFeed
-              channelId={siteConfig.youtube.channelId}
-              title={`${siteConfig.name} on YouTube`}
+          <div className="mx-auto mt-10 max-w-6xl">
+            <YouTubeVideoShelf
+              videos={shelfVideos}
+              title="Recent uploads"
+              emptyLabel="Videos from our YouTube channel will appear here soon."
             />
-            <p className="mt-3 text-center text-xs text-brand-600">
-              On a phone? Tap the playlist icon in the top-left of the player to browse past
-              videos.
-            </p>
           </div>
-          <div className="mt-8 text-center">
+          <div className="mt-8 flex flex-wrap justify-center gap-4">
+            <Link href="/sermons" className="btn-primary">
+              Sermons &amp; Open Heavens
+            </Link>
             <a
-              href={`https://www.youtube.com/channel/${siteConfig.youtube.channelId}`}
+              href={getChannelUrl(siteConfig.youtube.channelId)}
               target="_blank"
               rel="noreferrer noopener"
-              className="btn-primary"
+              className="btn-outline"
             >
-              Visit Our YouTube Channel
+              YouTube Channel
             </a>
           </div>
+          {youtube.latestOpenHeavens && (
+            <p className="mx-auto mt-6 max-w-2xl text-center text-sm text-brand-600">
+              Latest Open Heavens:{" "}
+              <a
+                href={getPlaylistUrl(siteConfig.youtube.playlists.openHeavens)}
+                target="_blank"
+                rel="noreferrer noopener"
+                className="font-semibold text-brand-800 underline decoration-dawn-500/50 underline-offset-2 hover:text-brand-950"
+              >
+                {youtube.latestOpenHeavens.title}
+              </a>
+            </p>
+          )}
         </div>
       </section>
 
@@ -251,15 +292,35 @@ export default function HomePage() {
         <div className="container-page relative grid gap-14 lg:grid-cols-2">
           <div>
             <p className="section-eyebrow-light">Latest Message</p>
-            <h2 className="mt-3 font-serif text-3xl font-medium text-white sm:text-4xl">
-              {latestSermon.title}
-            </h2>
-            <p className="mt-3 text-sm text-brand-300">
-              {latestSermon.speaker} &middot; {formatDate(latestSermon.date)}
-            </p>
-            <p className="mt-5 max-w-xl text-base leading-7 text-brand-200">
-              {latestSermon.summary}
-            </p>
+            {featuredVideo ? (
+              <>
+                <h2 className="mt-3 font-serif text-3xl font-medium text-white sm:text-4xl">
+                  {featuredVideo.title}
+                </h2>
+                {formatVideoDate(featuredVideo) && (
+                  <p className="mt-3 text-sm text-brand-300">
+                    {formatVideoDate(featuredVideo)} &middot; YouTube
+                  </p>
+                )}
+                {featuredVideo.description && (
+                  <p className="mt-5 max-w-xl text-base leading-7 text-brand-200 line-clamp-4">
+                    {featuredVideo.description}
+                  </p>
+                )}
+              </>
+            ) : (
+              <>
+                <h2 className="mt-3 font-serif text-3xl font-medium text-white sm:text-4xl">
+                  {fallbackSermon.title}
+                </h2>
+                <p className="mt-3 text-sm text-brand-300">
+                  {fallbackSermon.speaker} &middot; {formatDate(fallbackSermon.date)}
+                </p>
+                <p className="mt-5 max-w-xl text-base leading-7 text-brand-200">
+                  {fallbackSermon.summary}
+                </p>
+              </>
+            )}
             <Link href="/sermons" className="btn-secondary mt-8">
               View All Sermons
             </Link>
