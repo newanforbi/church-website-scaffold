@@ -65,15 +65,15 @@ export default function HomePage() {
         />
 
         <div className="container-page relative flex min-h-[88vh] flex-col justify-end pb-16 pt-28 sm:pb-20 sm:pt-32">
-          <p className="animate-fade-up font-serif text-4xl font-medium tracking-tight text-white sm:text-6xl lg:text-7xl">
+          <h1 className="animate-fade-up font-serif text-4xl font-medium tracking-tight text-white sm:text-6xl lg:text-7xl">
             {siteConfig.shortName}
-          </p>
+          </h1>
           <p className="mt-2 animate-fade-up text-sm font-medium uppercase tracking-[0.22em] text-dawn-400 sm:text-base">
             Open Heavens Parish &middot; Stockton, CA
           </p>
-          <h1 className="mt-6 max-w-xl animate-fade-up-delay font-serif text-2xl font-medium leading-snug text-white/95 sm:text-3xl">
+          <p className="mt-6 max-w-xl animate-fade-up-delay font-serif text-2xl font-medium leading-snug text-white/95 sm:text-3xl">
             {siteConfig.tagline}
-          </h1>
+          </p>
           <p className="mt-4 max-w-lg animate-fade-up-delay text-base leading-7 text-brand-100">
             A welcoming RCCG family gathering for worship, prayer, and the Word — in person and
             online.
