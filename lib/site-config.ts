@@ -145,6 +145,12 @@ export const siteConfig = {
     },
   ] satisfies SocialLink[],
 
+  // Instagram gallery config. Full-bleed scrolling photos use the Instagram
+  // Graph API when INSTAGRAM_ACCESS_TOKEN + INSTAGRAM_USER_ID are set.
+  socialEmbeds: {
+    instagramProfileUrl: "https://www.instagram.com/rccgorunshi.stockton/",
+  },
+
   youtube: {
     channelId: "UCEYR_1SJIV8MtbTvoV0c3LA",
     // Curated playlists from the church channel — used for dedicated

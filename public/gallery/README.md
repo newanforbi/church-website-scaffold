@@ -1,13 +1,20 @@
-# Gallery Images
+# Gallery
 
-Image files referenced by `lib/gallery-data.ts`:
+`/gallery` is Instagram-only.
 
-- `welcome-to-worship.jpg`, `digging-deep.jpg`, `new-month-power.jpg`, `power-night.jpg`, `shiloh-hour.jpg` — service/event flyers, with captions already written.
-- `photo-01.jpg` … `photo-29.jpg` — photos pulled from the church's Facebook page. These are small (206×206) Facebook thumbnail exports, so they're fine in the grid but will look soft when enlarged in the lightbox. Swap in higher-resolution originals when available for a crisper full-size view.
+## Full-bleed photo grid (recommended)
 
-To add more images, drop the file here and append an entry to the `galleryImages` array in `lib/gallery-data.ts` (or extend `PHOTO_COUNT` if you're adding more sequentially-named `photo-NN.jpg` files).
+Set these in `.env.local` / Vercel:
 
-Tips:
+```
+INSTAGRAM_ACCESS_TOKEN=...
+INSTAGRAM_USER_ID=...
+```
 
-- JPG or WebP, roughly 1200px on the long edge, keeps page weight down and looks sharp in the lightbox.
-- To identify what's in each `photo-NN.jpg`, open it and update its `alt`/`caption` in `lib/gallery-data.ts`.
+The page then loads photos edge-to-edge across the desktop viewport; visitors
+scroll down and can use **Load more** for older posts.
+
+## Without API credentials
+
+The page falls back to Instagram’s official profile embed (recent posts only,
+Instagram-capped width).
