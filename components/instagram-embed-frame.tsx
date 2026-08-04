@@ -3,9 +3,8 @@
 import { InstagramEmbed } from "@/components/instagram-embed";
 
 /**
- * Edge-to-edge stage for Instagram's official profile embed.
- * Instagram still controls the inner chrome, but we stretch the injected
- * iframe across the desktop width and give it tall scrollable height.
+ * Fallback when Graph API credentials are not configured.
+ * Instagram's official profile embed only exposes ~6 recent posts.
  */
 export function InstagramEmbedFrame({
   html,
@@ -17,22 +16,28 @@ export function InstagramEmbedFrame({
   profileUrl: string;
 }) {
   return (
-    <div className="w-full pb-12">
-      <div className="w-full px-0 sm:px-0">
+    <div className="w-full pb-16">
+      <div className="w-full">
         <InstagramEmbed html={html} fullBleed />
       </div>
-      <p className="mx-auto mt-8 max-w-lg px-4 text-center text-sm leading-6 text-brand-600">
-        Scroll to browse recent photos from @{handle}. For the complete archive,{" "}
+
+      <div className="mx-auto mt-10 max-w-xl px-4 text-center">
+        <p className="text-sm leading-6 text-brand-700">
+          Instagram only lets free embeds show about six recent posts. For a full-width gallery you
+          can scroll through the archive, connect the Instagram Graph API with{" "}
+          <code className="text-brand-900">INSTAGRAM_ACCESS_TOKEN</code> and{" "}
+          <code className="text-brand-900">INSTAGRAM_USER_ID</code> (see{" "}
+          <code className="text-brand-900">.env.example</code>).
+        </p>
         <a
           href={profileUrl}
           target="_blank"
           rel="noreferrer noopener"
-          className="font-semibold text-brand-800 underline decoration-dawn-500/50 underline-offset-2 hover:text-brand-950"
+          className="btn-outline mt-6"
         >
-          open Instagram
+          Browse all photos on @{handle}
         </a>
-        .
-      </p>
+      </div>
     </div>
   );
 }
