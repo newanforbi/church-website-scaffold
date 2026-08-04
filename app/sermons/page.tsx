@@ -33,16 +33,15 @@ export default function SermonsPage() {
             title={`${siteConfig.name} on YouTube`}
           />
           <p className="mt-4 text-center text-sm text-brand-600">
-            Every upload from our channel, most recent first &mdash; scroll the playlist panel to
-            browse the full archive. On a phone, tap the playlist icon in the top-left of the
-            player to open that list.
+            Every upload from our channel, most recent first — scroll the playlist panel to browse
+            the full archive. On a phone, tap the playlist icon in the top-left of the player.
           </p>
-          <div className="mt-4 text-center">
+          <div className="mt-6 text-center">
             <a
               href={`https://www.youtube.com/channel/${siteConfig.youtube.channelId}`}
               target="_blank"
               rel="noreferrer noopener"
-              className="btn-secondary"
+              className="btn-primary"
             >
               Visit Our YouTube Channel
             </a>
@@ -50,26 +49,30 @@ export default function SermonsPage() {
         </div>
       </section>
 
-      <section className="container-page pb-16">
-        <h2 className="section-heading text-center">Featured Messages</h2>
-        <div className="mt-10 grid gap-8 sm:grid-cols-2">
-          {sermons.map((sermon) => (
-            <article
-              key={sermon.slug}
-              className="flex flex-col rounded-xl border border-brand-900/10 p-6 transition-shadow hover:shadow-md"
-            >
-              <p className="text-xs font-semibold uppercase tracking-wide text-brand-600">
-                {sermon.series}
-              </p>
-              <h2 className="mt-2 font-serif text-2xl font-semibold text-brand-950">
-                {sermon.title}
-              </h2>
-              <p className="mt-1 text-sm text-brand-600">
-                {sermon.speaker} &middot; {formatDate(sermon.date)}
-              </p>
-              <p className="mt-3 flex-1 text-sm leading-6 text-brand-800">{sermon.summary}</p>
-            </article>
-          ))}
+      <section className="surface-mist border-t border-brand-900/10 py-20">
+        <div className="container-page">
+          <div className="mx-auto max-w-2xl text-center">
+            <p className="section-eyebrow">Archive</p>
+            <h2 className="section-heading mt-3">Featured Messages</h2>
+          </div>
+          <div className="mx-auto mt-12 max-w-3xl divide-y divide-brand-900/10 border-y border-brand-900/10">
+            {sermons.map((sermon) => (
+              <article key={sermon.slug} className="py-7">
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-dawn-600">
+                  {sermon.series}
+                </p>
+                <h2 className="mt-2 font-serif text-2xl font-medium text-brand-950">
+                  {sermon.title}
+                </h2>
+                <p className="mt-1 text-sm text-brand-600">
+                  {sermon.speaker} &middot; {formatDate(sermon.date)}
+                </p>
+                <p className="mt-3 max-w-2xl text-sm leading-6 text-brand-700">
+                  {sermon.summary}
+                </p>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
     </>
