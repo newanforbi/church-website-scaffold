@@ -147,6 +147,12 @@ export const siteConfig = {
 
   youtube: {
     channelId: "UCEYR_1SJIV8MtbTvoV0c3LA",
+    // Curated playlists from the church channel — used for dedicated
+    // Open Heavens / Salvation embeds and archive shelves on /sermons.
+    playlists: {
+      openHeavens: "PLrFVw9lktxbuvWLZNcKTQS3G6aDwEtlUD",
+      salvation: "PLrFVw9lktxbtymOVqqSVbkUHyRcm6P9Fz",
+    },
   },
 
   give: {
