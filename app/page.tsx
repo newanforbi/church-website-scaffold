@@ -46,11 +46,14 @@ export default async function HomePage() {
 
   const featuredVideo = youtube.latestMessage || youtube.latest;
   const fallbackSermon = sermons[0];
-  // Prefer parish messages; if the feed is thin, mix in recent Open Heavens.
-  const shelfVideos =
-    youtube.messages.length >= 4
-      ? youtube.messages
-      : uniqueById([...youtube.messages, ...youtube.openHeavens, ...youtube.recent]).slice(0, 8);
+  // Open Heavens leads the shelf, so the newest devotional is what plays by
+  // default; parish messages follow in the same carousel. `recent` tops the
+  // list up if either shelf came back thin.
+  const shelfVideos = uniqueById([
+    ...youtube.openHeavens.slice(0, 6),
+    ...youtube.messages.slice(0, 6),
+    ...youtube.recent,
+  ]).slice(0, 12);
 
   return (
     <>
@@ -253,14 +256,15 @@ export default async function HomePage() {
             </p>
             <h2 className="section-heading mt-2">Latest From Our YouTube Channel</h2>
             <p className="mt-4 text-base leading-7 text-brand-800">
-              Recent sermons and services, pulled live from YouTube. Tap a title to play it
-              here &mdash; or explore daily Open Heavens on the sermons page.
+              Today&apos;s Open Heavens devotional is playing below, followed by our recent
+              sermons and services &mdash; pulled live from YouTube. Tap any title to play it
+              here.
             </p>
           </div>
           <div className="mx-auto mt-10 max-w-6xl">
             <YouTubeVideoShelf
               videos={shelfVideos}
-              title="Recent uploads"
+              title="Open Heavens &amp; recent messages"
               emptyLabel="Videos from our YouTube channel will appear here soon."
             />
           </div>
@@ -268,6 +272,14 @@ export default async function HomePage() {
             <Link href="/sermons" className="btn-primary">
               Sermons and Open Heavens
             </Link>
+            <a
+              href={getPlaylistUrl(siteConfig.youtube.playlists.openHeavens)}
+              target="_blank"
+              rel="noreferrer noopener"
+              className="btn-outline"
+            >
+              Open Heavens Playlist
+            </a>
             <a
               href={getChannelUrl(siteConfig.youtube.channelId)}
               target="_blank"
@@ -277,19 +289,6 @@ export default async function HomePage() {
               Visit Our YouTube Channel
             </a>
           </div>
-          {youtube.latestOpenHeavens && (
-            <p className="mx-auto mt-6 max-w-2xl text-center text-sm text-brand-600">
-              Latest Open Heavens:{" "}
-              <a
-                href={getPlaylistUrl(siteConfig.youtube.playlists.openHeavens)}
-                target="_blank"
-                rel="noreferrer noopener"
-                className="font-semibold text-brand-800 underline decoration-gold-400/50 underline-offset-2 hover:text-brand-950"
-              >
-                {youtube.latestOpenHeavens.title}
-              </a>
-            </p>
-          )}
         </div>
       </section>
 

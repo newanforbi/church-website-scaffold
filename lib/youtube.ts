@@ -405,11 +405,16 @@ async function loadChurchYouTubeContent(
     (video) => !openHeavenIds.has(video.id) && !looksLikeOpenHeavensDevotional(video.title),
   );
 
-  // Prefer playlist-backed Open Heavens; fall back to title heuristic from channel feed.
-  const openHeavens =
-    openHeavensAll.length > 0
-      ? openHeavensAll
-      : recent.filter((video) => looksLikeOpenHeavensDevotional(video.title));
+  // Adding a video to the playlist is a manual step; uploading is not. Drive the
+  // shelf off the channel feed (newest-first) and count a video as a devotional
+  // if the playlist has it OR the title says so — otherwise a devotional
+  // uploaded today is filtered out of `messages` above but not yet on the
+  // playlist, so it shows up nowhere until someone curates it. The playlist
+  // still contributes history older than the channel pages we fetched.
+  const openHeavensFromChannel = recent.filter(
+    (video) => openHeavenIds.has(video.id) || looksLikeOpenHeavensDevotional(video.title),
+  );
+  const openHeavens = preferOrdered(openHeavensFromChannel, openHeavensAll);
 
   const latest = recent[0] || openHeavens[0] || null;
   const latestMessage = messages[0] || null;
