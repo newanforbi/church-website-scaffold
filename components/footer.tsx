@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { ChurchSeal } from "@/components/church-seal";
 import { siteConfig, toTelHref } from "@/lib/site-config";
 
 export function Footer() {
@@ -9,7 +10,10 @@ export function Footer() {
     <footer className="bg-brand-950 text-brand-100">
       <div className="container-page grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-4">
         <div>
-          <p className="font-serif text-lg font-semibold text-white">{siteConfig.name}</p>
+          <div className="flex items-center gap-3">
+            <ChurchSeal size={36} />
+            <p className="font-serif text-lg font-semibold text-white">{siteConfig.name}</p>
+          </div>
           <p className="mt-3 text-sm leading-6 text-brand-200">{siteConfig.tagline}</p>
           <ul className="mt-4 flex gap-3">
             {siteConfig.social.map((s) => (
