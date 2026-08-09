@@ -96,8 +96,8 @@ export default function AboutPage() {
           </div>
           <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
             <Image
-              src="https://images.unsplash.com/photo-1543269664-56d93c1b41a6?auto=format&fit=crop&w=1200&q=80"
-              alt="Church community gathered together"
+              src="/images/orunshi-celebration.jpg"
+              alt="Members of RCCG Open Heavens Parish (OrunShi) celebrating together"
               fill
               className="object-cover"
               sizes="(min-width: 1024px) 40vw, 100vw"
