@@ -149,7 +149,15 @@ export default function AboutPage() {
         <h2 className="section-heading text-center">Meet the Pastor</h2>
         <div className="mx-auto mt-10 max-w-3xl">
           <div className="flex flex-col items-center text-center">
-            <div className="h-28 w-28 rounded-full bg-brand-100" aria-hidden="true" />
+            <div className="relative h-28 w-28 overflow-hidden rounded-full bg-brand-100">
+              <Image
+                src="/images/pastor-lanre.jpg"
+                alt="Pastor Lanre Ejibunu"
+                fill
+                className="object-cover"
+                sizes="7rem"
+              />
+            </div>
             <p className="mt-4 font-serif text-xl font-semibold text-brand-950">
               {siteConfig.contact.pastor}
             </p>
