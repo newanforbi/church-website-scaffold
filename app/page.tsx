@@ -190,64 +190,6 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {specialEvent && (
-        <section className="bg-brand-50 py-16">
-          <div className="container-page flex flex-col items-center text-center">
-            <p className="text-sm font-semibold uppercase tracking-wide text-brand-600">
-              Annual Concert
-            </p>
-            <h2 className="section-heading mt-2">{specialEvent.title}</h2>
-            <p className="mt-2 text-base text-brand-800">
-              {specialEvent.dateLabel} &middot; {specialEvent.time}
-            </p>
-            <Link
-              href="/events"
-              className="mt-6 w-full max-w-xs overflow-hidden rounded-2xl shadow-lg ring-1 ring-brand-900/10 transition hover:opacity-90 sm:max-w-sm"
-            >
-              <Image
-                src={specialEvent.image}
-                alt={specialEvent.imageAlt}
-                width={1545}
-                height={1999}
-                className="h-auto w-full"
-                sizes="(min-width: 640px) 24rem, 90vw"
-              />
-            </Link>
-            <Link href="/events" className="btn-primary mt-6">
-              View Event Details
-            </Link>
-          </div>
-        </section>
-      )}
-
-      <section className="container-page py-20">
-        <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
-          <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
-            <Image
-              src="https://images.unsplash.com/photo-1529070538774-1843cb3265df?auto=format&fit=crop&w=1200&q=80"
-              alt="Congregation gathered in worship"
-              fill
-              className="object-cover"
-              sizes="(min-width: 1024px) 40vw, 100vw"
-            />
-          </div>
-          <div>
-            <p className="text-sm font-semibold uppercase tracking-wide text-brand-600">
-              Welcome Home
-            </p>
-            <h2 className="section-heading mt-2">You belong here.</h2>
-            <p className="mt-4 text-base leading-7 text-brand-800">
-              Whatever brought you here today, we&apos;re glad you found us. {siteConfig.name} is
-              a community of people from every background who are learning together what it
-              means to follow Jesus. Come as you are &mdash; there&apos;s a seat for you.
-            </p>
-            <Link href="/about" className="mt-6 inline-flex text-sm font-semibold text-brand-700 hover:text-brand-900">
-              Learn more about us &rarr;
-            </Link>
-          </div>
-        </div>
-      </section>
-
       <section className="bg-brand-50 py-20">
         <div className="container-page">
           <div className="mx-auto max-w-2xl text-center">
