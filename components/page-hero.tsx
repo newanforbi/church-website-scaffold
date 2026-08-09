@@ -1,3 +1,5 @@
+import { ChurchSeal } from "@/components/church-seal";
+
 export function PageHero({
   eyebrow,
   title,
@@ -10,6 +12,7 @@ export function PageHero({
   return (
     <section className="border-b border-brand-900/10 bg-brand-950">
       <div className="container-page py-16 sm:py-20">
+        <ChurchSeal size={48} className="mb-4" />
         {eyebrow && (
           <p className="text-sm font-semibold uppercase tracking-wide text-gold-400">
             {eyebrow}

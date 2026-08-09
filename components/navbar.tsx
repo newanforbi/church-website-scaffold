@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
+import { ChurchSeal } from "@/components/church-seal";
 import { siteConfig } from "@/lib/site-config";
 
 export function Navbar() {
@@ -12,7 +13,8 @@ export function Navbar() {
   return (
     <header className="sticky top-0 z-40 border-b border-brand-900/10 bg-white/90 backdrop-blur">
       <nav className="container-page flex h-16 items-center justify-between">
-        <Link href="/" className="font-serif text-lg font-semibold text-brand-950">
+        <Link href="/" className="flex items-center gap-2 font-serif text-lg font-semibold text-brand-950">
+          <ChurchSeal size={32} />
           {siteConfig.shortName}
         </Link>
 

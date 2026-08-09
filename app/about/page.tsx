@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { ChurchSeal } from "@/components/church-seal";
 import { PageHero } from "@/components/page-hero";
 import { siteConfig } from "@/lib/site-config";
 
@@ -126,6 +127,7 @@ export default function AboutPage() {
 
       <section className="bg-brand-950 py-16">
         <div className="container-page">
+          <ChurchSeal size={40} className="mx-auto mb-3" />
           <p className="text-center text-sm font-semibold uppercase tracking-wide text-gold-400">
             RCCG
           </p>

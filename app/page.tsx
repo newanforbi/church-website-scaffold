@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { ChurchSeal } from "@/components/church-seal";
 import { siteConfig, getMapsUrl } from "@/lib/site-config";
 import { sermons } from "@/lib/sermons-data";
 import { getUpcomingEvents } from "@/lib/recurring-events";
@@ -317,6 +318,7 @@ export default async function HomePage() {
       </section>
 
       <section className="container-page py-20 text-center">
+        <ChurchSeal size={64} className="mx-auto mb-4" />
         <h2 className="section-heading">Generosity changes everything.</h2>
         <p className="mx-auto mt-4 max-w-xl text-base leading-7 text-brand-800">
           Your giving supports our ministries, our staff, and our mission in{" "}
