@@ -29,7 +29,7 @@ export type SocialLink = {
 
 export const siteConfig = {
   name: "RCCG Open Heavens Parish (OrunShi)",
-  shortName: "RCCG OrunShi",
+  shortName: "RCCG OrunShi — Stockton",
   logo: "/images/rccg-seal.png",
   tagline: "Grow in faith, together.",
   description:
